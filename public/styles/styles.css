@@ -35,7 +35,7 @@ td {
 }
 
 .link {
-  color: #96d3ff;
+  
   margin-right: 25px;
   font-family: "Coiny", Arial, Helvetica, sans-serif;
   text-align: left;
@@ -43,6 +43,20 @@ td {
 }
 #login {
   color: rgb(255, 169, 226)
+
+}
+
+#signup {
+  color: #96d3ff;
+}
+#signup:hover {
+  cursor: pointer;
+  color: #56b9ff
+}
+
+#login:hover {
+  cursor: pointer;
+  color: rgb(255, 93, 201)
 }
 .row1 {
   margin-top: 30px;
@@ -90,15 +104,26 @@ label {
   color: #77b5e2;
 }
 
+.hide {
+  display: none;   
+}
+.show {
+  display: block;
+}
+
 .cancelbtn {
   background-color: rgb(255, 169, 226);
   border-color: rgb(255, 169, 226);
 }
-
+.cancelbtn:hover {
+  background-color: rgb(255, 66, 192);
+  border-color: rgb(255, 66, 192);
+}
 #sign-on {
   background-color: #96d3ff;
   border-color: #96d3ff;
 }
+
 
 /* .title {
   margin-top: 30px;
@@ -181,7 +206,13 @@ tr {
 .psw {
   font-size: 1rem;
   text-align: left;
+  color: rgb(255, 149, 220);
 }
+.psw:hover {
+  color: rgb(255, 66, 192);
+  text-decoration: none;
+}
+
 
 .form-control::placeholder {
   color: #afcfe6;

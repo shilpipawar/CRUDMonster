@@ -26,10 +26,10 @@
             <div class="col-md-4 left-side">
                 <h3 class="link"><span id="login">login</span> &nbsp;<span id="signup">sign up</span></h3>
 
-                <form action="#">
+                <form id="signup-form" class="hide" action="#">
                     <div class="form-group">
                         <label for="name-input"><b>Username</b></label>
-                        <input class="form-control" id="name-input" type="text" placeholder="Enter Username" name="name"
+                        <input class="form-control" id="name-input" type="text" placeholder="Create a username" name="name"
                             required minlength="4" maxlength="12" size="15">
                     </div>
                     <div class="form-group">
@@ -44,35 +44,46 @@
                     </div>
                     <div class="form-group">
                         <button class="btn btn-primary" id="sign-on" type="submit">Sign Up</button>
-                        <input class="remember-me" type="checkbox" checked="checked" name="remember">
+                        <button type="button" onclick="document.getElementById('id02').style.display='none'" class="btn btn-danger cancelbtn">Cancel</button>
+                    </div>
+                    <div class="form-group">
+                        <input class="remember-me" type="checkbox" name="remember">
                         <label class="form-check-label" for="exampleCheck1">Remember me</label>
                         <label for="message" id="lblmessage"></label>
                     </div>
-                    <button type="button" onclick="document.getElementById('id02').style.display='none'" class="btn btn-danger cancelbtn">Cancel</button>
-                    <span class="psw"><a href="#">Forgot password?</a></span>
+                    
+                    <div class="form-group">
+                        <span class="psw"><a class="psw" href="#">Forgot password?</a></span>
+                    </div>
                 </form>
-                <form>
-                    <!-- id="id01" -->
-                    <br />
-                    <br />
+
+                <!-- id="id01" -->
+                <form id="login-form" action="#">
                     <div class="form-group">
                         <label for="uname-input"><b>Username</b></label>
-                        <input id="uname-input" type="text" placeholder="Enter Username" name="uname" required
-                            minlength="8" maxlength="12" size="15">
+                        <input class="form-control" id="uname-input" type="text" placeholder="Enter Username" name="uname"
+                            required minlength="8" maxlength="12" size="15">
                     </div>
                     <div class="form-group">
                         <label for="upsw-input"><b>Password</b></label>
-                        <input id="upsw-input" type="password" placeholder="Enter Password" name="upsw" required
-                            minlength="8" maxlength="12" size="15">
+                        <input class="form-control upsw-input" type="password" placeholder="Enter Password" name="upsw"
+                            required minlength="8" maxlength="12" size="15">
                     </div>
-                    <button class="btn btn-primary" id="sign-on" type="submit">Login</button>
                     <div class="form-group">
-                        <input class="remember-me" type="checkbox" checked="checked" name="remember"> Remembe me
-                        <label for="message" id="lblmessage1"></label>
+                        <button class="btn btn-primary" id="sign-on" type="submit">Login</button>
+
+
+                        <button class="btn btn-danger cancelbtn" type="button" onclick="document.getElementById('id01').style.display='none'"
+                            class="cancelbtn">Cancel</button>
                     </div>
-                    <button class="btn btn-danger cancelbtn" type="button" onclick="document.getElementById('id01').style.display='none'"
-                        class="cancelbtn">Cancel</button>
-                    <span class="psw"><a href="#">Forgot password?</a></span>
+                    <div class="form-group">
+                        <input class="remember-me" type="checkbox" name="remember">
+                        <label class="form-check-label" for="message" id="lblmessage1">Remember Me</label>
+                    </div>
+                    <div class="form-group">
+                        <span class="psw"><a class="psw" href="#">Forgot password?</a></span>
+                    </div>
+
                 </form>
             </div>
             <div class="col-md-8">
@@ -162,6 +173,7 @@
         crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
         crossorigin="anonymous"></script>
+        <script src="form-views.js"></script>
 </body>
 
 </html>
