@@ -1,8 +1,8 @@
 {
   "development": {
     "username": "root",
-    "password": "vegetable",
-    "database": "exampledb",
+    "password": "Pass@1234",
+    "database": "ExpenseDB",
     "host": "localhost",
     "dialect": "mysql"
   },
