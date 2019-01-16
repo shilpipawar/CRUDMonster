@@ -3,21 +3,162 @@ body {
   background-color: #e8f5ff;
 }
 
-.container {
+/* title */
+.header {
+  color: #96d3ff;
+  text-align: left;
+  font-size: 3rem;
+  font-family: "Coiny", Arial, Helvetica, sans-serif;
+}
+.row1 {
+  margin-top: 30px;
+}
+#header-title {
+  padding-top: 10px;
+  margin-top: 30px;
   text-align: center;
+  background-color: #96d3ff;
+  border-radius: 30px;
+  font-family: "Coiny", Arial, Helvetica, sans-serif;
+  color: white;
+  font-size: 5rem;
+  margin-top: 10;
+  text-align: center;
+  
+}
+
+/* 
+#######################
+sign up and login
+#######################
+*/
+
+.btn-primary {
+  background-color: #96d3ff;
+  border-color: #96d3ff;
+}
+.btn-primary:hover {
+  background-color: #36abff;
+  border-color: #36abff;
+}
+
+.link {
+  margin-right: 25px;
+  font-family: "Coiny", Arial, Helvetica, sans-serif;
+  text-align: left;
+  font-size: 3rem;
+}
+
+#login {
+  color: rgb(255, 169, 226);
+}
+
+#signup {
+  color: #96d3ff;
+}
+
+#signup:hover {
+  cursor: pointer;
+  color: #56b9ff
+}
+
+#login:hover {
+  cursor: pointer;
+  color: rgb(255, 93, 201)
+}
+
+label {
+  color: #77b5e2;
+}
+
+.hide {
+  display: none;   
+}
+
+.show {
+  display: block;
+}
+
+.cancelbtn {
+  background-color: rgb(255, 169, 226);
+  border-color: rgb(255, 169, 226);
+}
+
+.cancelbtn:hover {
+  background-color: rgb(255, 66, 192);
+  border-color: rgb(255, 66, 192);
+}
+
+.form-group {
+  font-size: 1rem;
+  text-align: left;
+}
+
+.psw {
+  font-size: 1rem;
+  text-align: left;
+  color: rgb(255, 149, 220);
+}
+
+.psw:hover {
+  color: rgb(255, 66, 192);
+  text-decoration: none;
+}
+
+.form-control::placeholder {
+  color: #afcfe6;
 
 }
 
-.table {
+input[type=text] {
+  border: 1px solid #afcfe6;
+  border-radius: 4px;
+}
+
+input[type=password] {
+  border: 1px solid #afcfe6;
+  border-radius: 4px;
+}
+
+/* 
+#######################
+new expense form
+#######################
+*/
+
+#new-expense-form {
+  background-color: white;
   border-radius: 13px;
+  padding: 8px;
+  margin-bottom: 25px;
 }
+
+.right {
+  text-align: center;
+  margin-top: 15px;
+}
+
+.input-group-addon {
+  font-size: 1.5rem;
+}
+
+#new-expense-submit {
+  text-align: center;
+  width: 100%;
+  margin-bottom: 10px;
+}
+/* 
+#######################
+main table
+#######################
+*/
 
 th {
   font-family: "Coiny", Arial, Helvetica, sans-serif;
-  
   color: white;
   font-size: 3.5rem;
 }
+
 #category-column {
   background-color: rgb(142, 231, 189);
   text-align: left;
@@ -28,56 +169,11 @@ th {
   text-align: right;
   border-radius: 0 13px 0 0;
 }
+
 td {
   font-size: 2.5rem;
   color: #77b5e2;
   line-height: 2.5rem;
-}
-
-.link {
-  
-  margin-right: 25px;
-  font-family: "Coiny", Arial, Helvetica, sans-serif;
-  text-align: left;
-  font-size: 3rem;
-}
-#login {
-  color: rgb(255, 169, 226)
-
-}
-
-#signup {
-  color: #96d3ff;
-}
-#signup:hover {
-  cursor: pointer;
-  color: #56b9ff
-}
-
-#login:hover {
-  cursor: pointer;
-  color: rgb(255, 93, 201)
-}
-.row1 {
-  margin-top: 30px;
-}
-
-.left-side {
-  font-size: 3rem;
-  text-align: center;
-  margin-left: -10px;
-}
-#news-header {
-  margin-top: 10px;
-  font-family: "Coiny", Arial, Helvetica, sans-serif;
-  color: #96d3ff;
-  font-size: 4rem;
-}
-#charts-header {
-  margin-top: 10px;
-  font-family: "Coiny", Arial, Helvetica, sans-serif;
-  color: #96d3ff;
-  font-size: 4rem;
 }
 .table-borderless th, .table-borderless thead th {
   padding-top: 0;
@@ -95,85 +191,37 @@ td {
   background-color: white;
   text-align: left;
 }
-
-img {
-  margin-top: 50px;
-}
-
-label {
-  color: #77b5e2;
-}
-
-.hide {
-  display: none;   
-}
-.show {
-  display: block;
-}
-
-.cancelbtn {
-  background-color: rgb(255, 169, 226);
-  border-color: rgb(255, 169, 226);
-}
-.cancelbtn:hover {
-  background-color: rgb(255, 66, 192);
-  border-color: rgb(255, 66, 192);
-}
-#sign-on {
-  background-color: #96d3ff;
-  border-color: #96d3ff;
-}
-
-
-/* .title {
-  margin-top: 30px;
- 
-  
-  text-align: center;
- 
-  
-} */
-#header-title {
-  padding-top: 10px;
-  margin-top: 30px;
-  text-align: center;
-  background-color: #96d3ff;
-  border-radius: 30px;
-  font-family: "Coiny", Arial, Helvetica, sans-serif;
-  color: white;
-  font-size: 5rem;
-  margin-top: 10;
-  text-align: center;
-  
-}
 tr {
   border-bottom: 7px solid #e8f5ff;
 }
+/* 
+#######################
+math it up table
+#######################
+*/
 
 #total-expense {
   text-align: right;
-  
   border-radius: 0 0 13px 0;
   background-color: rgb(255, 169, 226);
   color: white;
-  
 }
+
 #total-category {
   text-align: left;
   border-radius: 0 0 0 13px;
   background-color: rgb(255, 169, 226);
   color: white;
-  
 }
+
 #total-savings-category {
   background-color: rgb(142, 231, 189);
   color: white;
-  border-radius: 0 0 0 13px;
-  
+  border-radius: 0 0 0 13px; 
   text-align: left;
-  
   font-size: 3.5rem;
 }
+
 #total-savings {
   background-color: rgb(142, 231, 189);
   color: white;
@@ -184,14 +232,11 @@ tr {
 
 .total-savings-row {
   height: 50px;
-  
 }
 
 #math {
-  
   border-radius: 13px 13px 0 0;
   background-color: #96d3ff;
-  
 }
 
 #math-table {
@@ -199,32 +244,43 @@ tr {
   margin-bottom: 100px;
 }
 
-.form-group {
-  font-size: 1rem;
-  text-align: left;
+/* 
+#######################
+other
+#######################
+*/
+
+#news-header {
+  margin-top: 10px;
+  font-family: "Coiny", Arial, Helvetica, sans-serif;
+  color: #96d3ff;
+  font-size: 4rem;
 }
-.psw {
-  font-size: 1rem;
-  text-align: left;
-  color: rgb(255, 149, 220);
-}
-.psw:hover {
-  color: rgb(255, 66, 192);
-  text-decoration: none;
+
+#charts-header {
+  margin-top: 10px;
+  font-family: "Coiny", Arial, Helvetica, sans-serif;
+  color: #96d3ff;
+  font-size: 4rem;
 }
 
 
-.form-control::placeholder {
-  color: #afcfe6;
+/* TABLE OF CONTENTS */
 
-}
+/* 1. title */
+/* 2. sign up and login */
+/* 3. new expense form */
+/* 4. main table */
+/* 5. math it up table */
+/* 6. other */
 
-input[type=text] {
-  border: 1px solid #afcfe6;
-  border-radius: 4px;
-}
 
-input[type=password] {
-  border: 1px solid #afcfe6;
-  border-radius: 4px;
-}
+
+
+
+
+
+
+
+
+
