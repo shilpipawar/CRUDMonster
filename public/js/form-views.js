@@ -1,18 +1,17 @@
-$(document).ready(function () {
-    console.log("index")
+$(document).ready(function() {
 
     // Showing and hiding login form
-    $("#login").on("click", function () {
+    $("#login").on("click", function() {
         $("#signup-form").addClass("hide");
         $("#login-form").removeClass("hide");
     });
-    $("#signup").on("click", function () {
+    $("#signup").on("click", function() {
         $("#login-form").addClass("hide");
         $("#signup-form").removeClass("hide");
     });
 
     // Grab values from new expense form
-    $("#new-expense-submit").on("click", function () {
+    $("#new-expense-submit").on("click", function() {
         event.preventDefault();
         var category = $("#category").val();
         var description = $("#description").val();
@@ -25,11 +24,29 @@ $(document).ready(function () {
         console.log(amount);
 
     });
+  
 
     function validateRegistration() {
+        
+        var username;
+        var illChars = /\W/;
         var name = $("#name-input").val().trim();
         var passwordField = $("#psw-input").val().trim();
         var confirmPassword = $("#confpsw-input").val().trim();
+
+        if (name == "") {
+            alert("Please enter a username");
+        } else if ((name.length < 5) || (name.length > 15)) {
+            alert("Your username is the wrong length (5-15 characters allowed).")
+        } else if (illChars.test(name)) {
+            alert("Username can use letters, numbers and/or underscores.")
+        } else {
+            username = name;
+            console.log(username);
+
+        }
+
+        
         if (passwordField === confirmPassword) {
             var password = passwordField;
             console.log(password);
@@ -39,12 +56,12 @@ $(document).ready(function () {
         // var password = value of password if it passes all the criteria
 
     }
-    $("#sign-up").on("click", function () {
+    $("#sign-up").on("click", function() {
         event.preventDefault();
         validateRegistration();
     })
 
-    function validateLogin() {
+    function validateRegistration() {
         // var password = SHA(password)
 
 

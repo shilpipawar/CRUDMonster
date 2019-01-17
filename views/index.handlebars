@@ -27,20 +27,28 @@
       <!-- Sign up form -->
       <!--##########################################################-->
       <form id="signup-form" class="hide" action="/register-username" method="post" onsubmit="return validateRegistration()">
+        <div id="message">
+          <h3>Password must contain:</h3>
+          <p id="letter" class="invalid">A <b>lowercase</b> letter</p>
+          <p id="capital" class="invalid">A <b>capital (uppercase)</b> letter</p>
+          <p id="number" class="invalid">A <b>number</b></p>
+          <p id="length" class="invalid">Minimum <b>8 characters</b></p>
+        </div>
+
         <div class="form-group">
           <label for="name-input"><b>Username</b></label>
-          <input class="form-control" id="name-input" type="text" pattern="[A-Za-z]{5-8}" placeholder="Create a username" name="name" required
-            minlength="4" maxlength="12" size="15">
+          <input class="form-control" id="name-input" type="text" pattern="[A-Za-z]{5,}" placeholder="Create a username"
+            name="name" required minlength="4" maxlength="12" size="15">
         </div>
         <div class="form-group">
           <label for="psw-input"><b>Password</b></label>
-          <input class="form-control" id="psw-input" type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" placeholder="Enter Password" name="psw" required
-            minlength="8" maxlength="12" size="15">
+          <input class="form-control" id="psw-input" type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+            placeholder="Enter Password" name="psw" required minlength="8" maxlength="12" size="15">
         </div>
         <div class="form-group">
           <label for="confpsw-input"><b>Confirm Password</b></label>
-          <input class="form-control" id="confpsw-input" type="password" placeholder="Confirm Password" name="psw"
-            required minlength="8" maxlength="12" size="15">
+          <input class="form-control" id="confpsw-input" type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+            placeholder="Confirm Password" name="psw" required minlength="8" maxlength="12" size="15">
         </div>
         <div class="form-group">
           <button class="btn btn-primary" id="sign-on" type="submit">Sign Up</button>
@@ -72,7 +80,7 @@
             minlength="8" maxlength="12" size="15">
         </div>
         <div class="form-group">
-          <button class="btn btn-primary" id="sign-on" type="submit">Login</button>
+          <button class="btn btn-primary" id="sign-up" type="submit">Login</button>
 
 
           <button class="btn btn-danger cancelbtn" type="button" onclick="document.getElementById('id01').style.display='none'"
