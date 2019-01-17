@@ -1,0 +1,39 @@
+Label List
+
+
+  Database: budget_db
+
+  Tables: 
+    * Income
+    * Expenses
+    * Users
+    * Category
+
+  Income {
+    user_id: INT (foreign key)
+    amount: INT (float, double)
+    category_id: INT (foreign key)
+    notes: TEXT
+  }
+
+  Expenses {
+    description: VARCHAR
+    amount: INT
+    category_id: INT (foreign key)
+    date: DATETIME
+  }
+
+  Users {
+    username: VARCHAR
+    password: VARCHAR
+    firstName: VARCHAR
+    lastName: VARCHAR
+  }
+
+  Category {
+    id: INT
+    name: VARCHAR
+    isExpense: BOOLEAN
+  }
+  
+  
