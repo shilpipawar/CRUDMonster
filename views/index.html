@@ -105,7 +105,7 @@
                     <h2 class="header">new purchase</h2>
                     <div class="form-row">
                         <div class="col">
-                            <select class="form-control" id="exampleFormControlSelect1">
+                            <select class="form-control" id="category">
                                 <!-- User chooses a category (Entered dummy data. Change as needed)-->
                                 <option class="choose">Category...</option>
                                 <option>Rent</option>
@@ -130,12 +130,12 @@
                         <!-- User enters the amount -->
                         <div class="input-group col">
                             <span class="input-group-addon">$&nbsp;</span>
-                            <input type="number" value="1000" min="0" step="0.01" data-number-to-fixed="2"
-                                data-number-stepfactor="100" class="form-control currency" id="c2" />
+                            <input type="number" value="0.00" min="0" step="0.01" data-number-to-fixed="2"
+                                data-number-stepfactor="100" class="form-control currency" id="amount" />
                         </div>
                         <!-- User enters the date -->
                         <div class="col">
-                            <input type="date" class="form-control" id="date" placeholder="MM/DD/YYYY">
+                            <input type="date" class="form-control" id="date">
                         </div>
                         <!-- Submit button should submit all four values to the database -->
                     </div>
