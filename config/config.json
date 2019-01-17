@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "root",
-    "password": "Pass@1234",
+    "password": "sesame",
     "database": "ExpenseDB",
     "host": "localhost",
     "dialect": "mysql"
