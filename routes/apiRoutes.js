@@ -49,15 +49,10 @@ module.exports = function (app) {
     //   }
   });
   ////////////////////////Register Controler Code//////////////////////////////////////////////////////////////////////////////////
-  app.post("/register-username", function (req, res) {
+  app.post("/register-username", function(req, res) {
     console.log(req.body);
     var userName = req.body.name;
-    // var firstName = req.body.firstname;
-    // var lastName = req.body.lastname;
-    // ||
-    // firstName.search(/^[A-Za-z]+$/) === -1 ||
-    // lastName.search(/^[A-Za-z]+$/) === -1
-    var password = req.body.passwordField;
+    var password = req.body.psw;
     if (userName.search(/^[A-Za-z0-9]+$/) === -1) {
       res.redirect(303, "./views/registration-failure.html");
       return;
@@ -66,9 +61,9 @@ module.exports = function (app) {
       name: userName,
       passSHA: password
     };
-    db.Example.create(input).then(function (dbExample) {
-      //res.json(dbExample);
-      res.render(202);
+    db.Example.create(input).then(function(dbExample) {
+      // res.json(dbExample);
+      //res.render(202);
     });
   });
   //////////////////////////////////////////////////////////////////////////////////////////////////////////
