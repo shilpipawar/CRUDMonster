@@ -61,11 +61,9 @@ $(document).ready(function() {
         validateRegistration();
     })
 
+
     // function validateRegistration() {
     //     // var password = SHA(password)
-
-
-
     // }
 
     // PASSWORD PROTECTION STUFF

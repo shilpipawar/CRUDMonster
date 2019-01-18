@@ -33,11 +33,14 @@
 
         <div class="form-group">
           <label for="name-input"><b>Username</b></label>
+
           <input class="form-control" id="name-input" type="text" pattern="[a-zA-Z0-9]+" placeholder="Create a username"
+
             name="name" required minlength="4" maxlength="12" size="15">
         </div>
         <div class="form-group">
           <label for="psw-input"><b>Password</b></label>
+
           <input class="form-control" id="psw-input" type="password" pattern="(?=.*\d)(?=.*[a-z]).{8,}"
             placeholder="Enter Password" name="psw">
         </div>
@@ -48,6 +51,7 @@
         </div>
         <div class="form-group">
           <button class="btn btn-primary" id="sign-up" type="submit">Sign Up</button>
+
           <button type="button" onclick="document.getElementById('id02').style.display='none'" class="btn btn-danger cancelbtn">Cancel</button>
         </div>
         <div class="form-group">
@@ -76,7 +80,9 @@
             minlength="8" maxlength="12" size="15">
         </div>
         <div class="form-group">
+
           <button class="btn btn-primary" id="sign-on" type="submit">Login</button>
+
 
 
           <button class="btn btn-danger cancelbtn" type="button" onclick="document.getElementById('id01').style.display='none'"
