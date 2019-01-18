@@ -1,17 +1,17 @@
-$(document).ready(function() {
+$(document).ready(function () {
 
     // Showing and hiding login form
-    $("#login").on("click", function() {
+    $("#login").on("click", function () {
         $("#signup-form").addClass("hide");
         $("#login-form").removeClass("hide");
     });
-    $("#signup").on("click", function() {
+    $("#signup").on("click", function () {
         $("#login-form").addClass("hide");
         $("#signup-form").removeClass("hide");
     });
 
     // Grab values from new expense form
-    $("#new-expense-submit").on("click", function() {
+    $("#new-expense-submit").on("click", function () {
         event.preventDefault();
         var category = $("#category").val();
         var description = $("#description").val();
@@ -24,15 +24,38 @@ $(document).ready(function() {
         console.log(amount);
 
     });
-  
+
 
     function validateRegistration() {
-        
+
         var username;
         var illChars = /\W/;
         var name = $("#name-input").val().trim();
         var passwordField = $("#psw-input").val().trim();
         var confirmPassword = $("#confpsw-input").val().trim();
+        var password;
+
+        function checkPwd(str) {
+            if (str.length < 6) {
+                alert("too_short");
+            } else if (str.length > 50) {
+                alert("too_long");
+            } else if (str.search(/\d/) == -1) {
+                alert("no_num");
+            } else if (str.search(/[a-zA-Z]/) == -1) {
+                alert("no_letter");
+            } else if (str.search(/[^a-zA-Z0-9\!\@\#\$\%\^\&\*\(\)\_\+]/) != -1) {
+                alert("bad_char");
+            } else if (passwordField !== confirmPassword) {
+                alert("Passwords don't match!");
+
+            } else if (passwordField === confirmPassword) {
+                password = passwordField;
+                SHA512(password);
+            };
+        };
+
+        checkPwd(passwordField);
 
         if (name == "") {
             alert("Please enter a username");
@@ -46,25 +69,23 @@ $(document).ready(function() {
 
         }
 
-        
-        if (passwordField === confirmPassword) {
-            var password = passwordField;
-            console.log(password);
-        } else {
-            alert("Passwords don't match!");
-        }
-        // var password = value of password if it passes all the criteria
-
     }
-    $("#sign-up").on("click", function() {
+    $("#sign-up").on("click", function () {
         event.preventDefault();
-        validateRegistration();
-    })
 
+        validateRegistration();
+        $("#name-input").val("");
+        $("#psw-input").val("");
+        $("#confpsw-input").val("");
+    })
 
     // function validateRegistration() {
     //     // var password = SHA(password)
+
+
+
     // }
+
 
     // PASSWORD PROTECTION STUFF
     function SHA512(str) {
@@ -332,6 +353,8 @@ $(document).ready(function() {
             binarray.push(H[i].lowOrder);
         }
         return binb2hex(binarray);
+        
     }
+    
 
 });
