@@ -61,12 +61,10 @@ $(document).ready(function() {
         validateRegistration();
     })
 
-    function validateRegistration() {
-        // var password = SHA(password)
 
-
-
-    }
+    // function validateRegistration() {
+    //     // var password = SHA(password)
+    // }
 
     // PASSWORD PROTECTION STUFF
     function SHA512(str) {
