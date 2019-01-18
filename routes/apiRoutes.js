@@ -50,23 +50,23 @@ module.exports = function (app) {
   });
   ////////////////////////Register Controler Code//////////////////////////////////////////////////////////////////////////////////
   app.post("/register-username", function (req, res) {
-    var userName = req.body.username;
+    console.log(req.body);
+    var userName = req.body.name;
     // var firstName = req.body.firstname;
     // var lastName = req.body.lastname;
     // ||
     // firstName.search(/^[A-Za-z]+$/) === -1 ||
     // lastName.search(/^[A-Za-z]+$/) === -1
-    var password = req.body.password;
+    var password = req.body.passwordField;
     if (userName.search(/^[A-Za-z0-9]+$/) === -1) {
       res.redirect(303, "./views/registration-failure.html");
       return;
     }
-    var user = new User({
-      userName: username,
-      password: password,
-      regTimeStamp: (new Date()).getTime()
-    });
-    db.Example.create(user).then(function (dbExample) {
+    var input = {
+      name: userName,
+      passSHA: password
+    };
+    db.Example.create(input).then(function (dbExample) {
       //res.json(dbExample);
       res.render(202);
     });
