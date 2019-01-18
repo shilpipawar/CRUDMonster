@@ -46,8 +46,10 @@ $(document).ready(function() {
 
         }
 
-        
-        if (passwordField === confirmPassword) {
+        if (passwordField === "") {
+            alert("Please choose a password.") 
+            return;
+        } else if (passwordField === confirmPassword) {
             var password = passwordField;
             console.log(password);
         } else {
@@ -61,9 +63,11 @@ $(document).ready(function() {
         validateRegistration();
     })
 
-
     // function validateRegistration() {
     //     // var password = SHA(password)
+
+
+
     // }
 
     // PASSWORD PROTECTION STUFF
