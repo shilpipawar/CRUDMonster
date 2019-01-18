@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "root",
-    "password": null,
+    "password": "Pass@1234",
     "database": "ExpenseDB",
     "host": "localhost",
     "dialect": "mysql"

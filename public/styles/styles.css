@@ -47,26 +47,6 @@ sign up and login
   font-size: 18px;
 }
 
-.valid {
-  color: green;
-}
-
-.valid:before {
-  position: relative;
-  left: -35px;
-  content: "✔";
-}
-
-/* Add a red text color and an "x" when the requirements are wrong */
-.invalid {
-  color: red;
-}
-
-.invalid:before {
-  position: relative;
-  left: -35px;
-  content: "✖";
-}
 .btn-primary {
   background-color: #96d3ff;
   border-color: #96d3ff;
@@ -152,6 +132,39 @@ input[type=text] {
 input[type=password] {
   border: 1px solid #afcfe6;
   border-radius: 4px;
+}
+
+/* 
+#######################
+months
+#######################
+*/
+
+#month-dropdown {
+ 
+  background-color: rgb(142, 231, 189);
+  border-color: rgb(142, 231, 189);
+  color: white;
+  
+
+}
+.btn-secondary {
+  background-color: rgb(142, 231, 189);
+  border-color: rgb(142, 231, 189);
+  color: white;
+  
+}
+
+.btn-secondary:hover {
+  background-color: rgb(78, 216, 152);
+  border-color: rgb(78, 216, 152);
+  color: white;
+}
+
+.btn-secondary:focus {
+  background-color: rgb(142, 231, 189);
+  border-color: rgb(142, 231, 189);
+  color: white;
 }
 
 /* 
