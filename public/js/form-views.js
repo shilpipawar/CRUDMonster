@@ -33,6 +33,7 @@ $(document).ready(function () {
         var name = $("#name-input").val().trim();
         var passwordField = $("#psw-input").val().trim();
         var confirmPassword = $("#confpsw-input").val().trim();
+        var password;
 
         function checkPwd(str) {
             if (str.length < 6) {
@@ -49,9 +50,8 @@ $(document).ready(function () {
                 alert("Passwords don't match!");
 
             } else if (passwordField === confirmPassword) {
-                var password = passwordField;
-                console.log(password);
-
+                password = passwordField;
+                SHA512(password);
             };
         };
 
@@ -85,6 +85,7 @@ $(document).ready(function () {
 
 
     // }
+
 
     // PASSWORD PROTECTION STUFF
     function SHA512(str) {
@@ -352,6 +353,8 @@ $(document).ready(function () {
             binarray.push(H[i].lowOrder);
         }
         return binb2hex(binarray);
+        
     }
+    
 
 });
