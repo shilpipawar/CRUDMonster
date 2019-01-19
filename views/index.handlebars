@@ -1,9 +1,8 @@
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-  crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
-  crossorigin="anonymous"></script>
+{{!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+  crossorigin="anonymous"></script> --}}	  crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
   crossorigin="anonymous"></script>
 <script src="./js/form-views.js"></script>
@@ -22,15 +21,16 @@
     <!--##########################################################-->
 
     <div class="col-md-4 left-side">
+      <h3 class="link"><span id="login">login</span> &nbsp;<span id="signup">sign up</span></h3>
       <br />
       <br />
       <br />
 
       <h3 class="link"><span id="login">login</span> &nbsp;<span id="signup">sign up</span></h3>
       <!--##########################################################-->
-      <!-- Sign up form -->
+            <!-- Sign up form action="/register-username" method="post" onsubmit="return validateRegistration()"-->
       <!--##########################################################-->
-      <form id="signup-form" class="hide" action="/register-username" method="post" onsubmit="return validateRegistration()">
+       <form id="signup-form" class="hide" action="/register-username" method="post">
         <div id="message">
 
         </div>
@@ -53,7 +53,7 @@
             name="psw" required minlength="8" maxlength="12" size="15">
         </div>
         <div class="form-group">
-          <button class="btn btn-primary" id="sign-up" type="submit">Sign Up</button>
+          <button class="btn btn-primary" id="signUp" type="submit">Sign Up</button>
 
           <button type="button" onclick="document.getElementById('id02').style.display='none'" class="btn btn-danger cancelbtn">Cancel</button>
         </div>
@@ -71,7 +71,7 @@
       <!--##########################################################-->
       <!-- Login form -->
       <!--##########################################################-->
-      <form id="login-form" action="#">
+      <form id="login-form" action="/login-username" method="post">
         <div class="form-group">
           <label for="uname-input"><b>Username</b></label>
           <input class="form-control" id="uname-input" type="text" placeholder="Enter Username" name="uname" required
@@ -79,12 +79,12 @@
         </div>
         <div class="form-group">
           <label for="upsw-input"><b>Password</b></label>
-          <input class="form-control upsw-input" type="password" placeholder="Enter Password" name="upsw" required
+          <input class="form-control" id="psw-input" type="password" placeholder="Enter Password" name="upsw" required
             minlength="8" maxlength="12" size="15">
         </div>
         <div class="form-group">
 
-          <button class="btn btn-primary" id="sign-on" type="submit">Login</button>
+           <button class="btn btn-primary" id="signIn" type="submit">Login</button>
 
 
 
