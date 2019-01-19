@@ -7,9 +7,8 @@ use budget_db;
 create table users(
 	id int auto_increment primary key  not null, 
     userName varchar(100), 
-    password  text, -- for sha512
-    firstName varchar(100),
-    lastName varchar(100)
+    password  text -- for sha512
+
     
 );
 
