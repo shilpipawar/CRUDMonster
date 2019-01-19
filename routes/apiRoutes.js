@@ -1,7 +1,7 @@
 var db = require("../models");
 var budget = require("../models/budget.js");
 
-module.exports = function (app) {
+module.exports = function(app) {
   // Get all examples
 
   /* ------------income---------------*/
@@ -75,21 +75,24 @@ module.exports = function (app) {
   /*-------------end users----------------*/
 
   // Create a new example
-  app.post("/api/examples", function (req, res) {
-    db.Example.create(req.body).then(function (dbExample) {
+  app.post("/api/examples", function(req, res) {
+    db.Example.create(req.body).then(function(dbExample) {
       res.json(dbExample);
     });
   });
 
   // Delete an example by id
-  app.delete("/api/examples/:id", function (req, res) {
-    db.Example.destroy({ where: { id: req.params.id } }).then(function (dbExample) {
+  app.delete("/api/examples/:id", function(req, res) {
+    db.Example.destroy({ where: { id: req.params.id } }).then(function(
+      dbExample
+    ) {
       res.json(dbExample);
     });
   });
 
   /////////////////////////Login Controler Code/////////////////////////////////////////////////////////////
-  app.get("/login-username", function (req, res) {
+  app.get("/login-username", function(req, res) {
+    console.log(req.body);
     var userName = req.body.username;
     var password = req.body.password;
 
@@ -97,9 +100,9 @@ module.exports = function (app) {
       res.render(404);
       return;
     }
-    db.Example.find({}).then(function (passwordDB) {
+    db.Example.find({}).then(function(passwordDB) {
       if (password === passwordDB) {
-        res.render(202);//success
+        res.render(404); //success
       } else {
         res.render(404); //Error
       }
