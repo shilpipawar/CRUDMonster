@@ -42,14 +42,15 @@ $(document).ready(function() {
     } else if (illChars.test(name)) {
       alert("Username can use letters, numbers and/or underscores.");
     } else {
+      illChars.test(name);
       console.log(name);
     }
     if (passwordField === confirmPassword) {
       var password = SHA512(passwordField);
       console.log(password);
     } else {
-      //$("#message").html = "Passwords don't match!";
-      alert("mismatch");
+      $("#message").html = "Passwords don't match!";
+      //alert("mismatch");
       return false;
     }
     var input = {
