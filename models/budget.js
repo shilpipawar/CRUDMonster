@@ -38,7 +38,7 @@ var expense = {
   }
 };
 
-module.export = expense;
+module.exports = expense;
 
 var income = {
   all: function(cb) {
@@ -57,7 +57,67 @@ var income = {
     orm.update("income", objColVals, condition, function(res) {
       cb(res);
     });
+  },
+
+  delete: function(condition, cb) {
+    orm.delete("income", condition, function(res) {
+      cb(res);
+    });
   }
 };
 
-module.export = income;
+module.exports = income;
+
+var users = {
+  all: function(cb) {
+    orm.all("users", function(res) {
+      cb(res);
+    });
+  },
+
+  create: function(cols, vals, cb) {
+    orm.create("users", cols, vals, function(res) {
+      cb(res);
+    });
+  },
+
+  update: function(objColVals, condition, cb) {
+    orm.update("users", objColVals, condition, function(res) {
+      cb(res);
+    });
+  },
+
+  delete: function(condition, cb) {
+    orm.delete("users", condition, function(res) {
+      cb(res);
+    });
+  }
+};
+
+module.exports = users;
+
+var category = {
+  all: function(cb) {
+    orm.all("category", function(res) {
+      cb(res);
+    });
+  },
+
+  create: function(cols, vals, cb) {
+    orm.create("category", cols, vals, function(res) {
+      cb(res);
+    });
+  }
+};
+
+module.exports = category;
+
+var months = {
+  create: function(cols, vals, cb) {
+    orm.create("months", cols, vals, function(res) {
+      cb(res);
+    });
+  }
+};
+
+module.exports = months;
