@@ -45,7 +45,11 @@ require("./routes/htmlRoutes")(app);
 }); */
 
 app.listen(PORT, function() {
-  console.log("App listening on " + PORT);
-})
+  console.log(
+    "Listening on port %s. Visit http://localhost:%s/ in your browser.",
+    PORT,
+    PORT
+  );
+});
 
 module.exports = app;

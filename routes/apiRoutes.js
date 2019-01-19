@@ -31,7 +31,7 @@ module.exports = function(app) {
   }); //End user-login
   ////////////////////////Register Controler Code////////////////////////////////////////////////////////////
   app.post("/register-username", function(req, res) {
-    console.log("body " + req.body);
+    
     var userName = req.body.name;
     var password = req.body.password;
      /* if (userName.search(/^[A-Za-z0-9]+$/) === -1) {
