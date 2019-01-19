@@ -90,8 +90,9 @@ $(document).ready(function() {
     return true;
   }
   //Logout
-  function doLogout(){
-
+  function doLogout() {
+    console.log("Logout");
+    //Show index handlebar on logout
   }
   //User-Reg - signup-form
   $(document).on("click", "#signUp", validateRegistration);
