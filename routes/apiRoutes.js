@@ -26,6 +26,7 @@ module.exports = function(app) {
 
   /////////////////////////Login Controler Code/////////////////////////////////////////////////////////////
   app.get("/login-username", function(req, res) {
+    console.log(req.body);
     var userName = req.body.username;
     var password = req.body.password;
 
@@ -35,7 +36,7 @@ module.exports = function(app) {
     }
     db.Example.find({}).then(function(passwordDB) {
       if (password === passwordDB) {
-        res.render(202); //success
+        res.render(404); //success
       } else {
         res.render(404); //Error
       }

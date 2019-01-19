@@ -23,7 +23,6 @@ $(document).ready(function() {
     console.log(amount);
   });
   function validateRegistration() {
-    console.log("inside");
     var illChars = /\W/;
     var name = $("#name-input")
       .val()
@@ -66,8 +65,32 @@ $(document).ready(function() {
     });
     return true;
   }
+  function doSignIn() {
+    console.log("SingIN..");
+    var illChars = /\W/;
+    var name = $("#uname-input")
+      .val()
+      .trim();
+    var password = $("#psw-input")
+      .val()
+      .trim();
+    var input = {
+      name: name,
+      password: SHA512(password)
+    };
+    $.ajax({
+      method: "GET",
+      url: "/login-username",
+      data: input
+    }).then(function() {
+      console.log("success");
+    });
+    return true;
+  }
   //User-Reg - signup-form
   $(document).on("click", "#signUp", validateRegistration);
+  //User-signin
+  $(document).on("click", "#signIn", doSignIn);
   // PASSWORD PROTECTION SHA algo
   /*
 * Secure Hash Algorithm (SHA512)
