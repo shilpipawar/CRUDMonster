@@ -24,27 +24,28 @@ $(document).ready(function() {
   });
   //Register
   function validateRegistration() {
-    var illChars = /\W/;
-    var name = $("#name-input")
-      .val()
-      .trim();
+    //var illChars = /\W/;
+   
     var passwordField = $("#psw-input")
       .val()
       .trim();
     var confirmPassword = $("#confpsw-input")
       .val()
       .trim();
+      var name = $("#name-input")
+      .val()
+      .trim();
 
-    if (name === "") {
-      alert("Please enter a username");
-    } else if (name.length < 5 || name.length > 15) {
-      alert("Your username is the wrong length (5-15 characters allowed).");
-    } else if (illChars.test(name)) {
-      alert("Username can use letters, numbers and/or underscores.");
-    } else {
-      illChars.test(name);
-      console.log(name);
-    }
+    // if (name === "") {
+    //   alert("Please enter a username");
+    // } else if (name.length < 5 || name.length > 15) {
+    //   alert("Your username is the wrong length (5-15 characters allowed).");
+    // } else if (illChars.test(name)) {
+    //   alert("Username can use letters, numbers and/or underscores.");
+    // } else {
+    //   illChars.test(name);
+    //   console.log(name);
+    // }
     if (passwordField === confirmPassword) {
       var password = SHA512(passwordField);
       console.log(password);
