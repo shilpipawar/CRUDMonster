@@ -119,18 +119,28 @@ module.exports = function (app) {
     console.log(req.body);
     var userName = req.body.name;
     var password = req.body.psw;
-    if (userName.search(/^[A-Za-z0-9]+$/) === -1) {
+   /* if (userName.search(/^[A-Za-z0-9]+$/) === -1) {
       res.redirect(303, "./views/registration-failure.html");
       return;
-    }
-    var input = {
+    } */
+  /*  var input = {
       name: userName,
       passSHA: password
-    };
-    db.Example.create(input).then(function(dbExample) {
+    }; */
+    console.log(userName, password);
+    budget.users.create(
+      ["userName", "password"],
+      [userName, password],
+      function(result) {
+        console.log("API routes and " +  result);
+        res.json(result);
+      }
+    );
+
+  //  db.Example.create(input).then(function(dbExample) {
       // res.json(dbExample);
       //res.render(202);
-    });
+  //  });
   });
   //////////////////////////////////////////////////////////////////////////////////////////////////////////
 };

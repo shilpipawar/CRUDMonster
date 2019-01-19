@@ -3,14 +3,12 @@ use budget_db;
 
 -- Users 
 insert into  users (userName , 
-    password ,
-    firstName ,
-    lastName ) VALUES ('admin','password','super','user');
+    password
+    ) VALUES ('admin','password');
     
 insert into  users (userName , 
-    password ,
-    firstName ,
-    lastName ) VALUES ('johnD','whatever','John','Doe');
+    password 
+    ) VALUES ('johnD','whatever');
     
     
 -- Categories
@@ -42,4 +40,6 @@ insert into expense (amount ,users_id ,category_id ,notes ,date)
 				values (40, 2, 4,'uptown','2019-01-12');
 insert into expense (amount ,users_id ,category_id ,notes ,date)
 				values (10, 1, 5,'test','2019-01-18');
+                
+                
                 
