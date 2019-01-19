@@ -2,6 +2,7 @@ var db = require("../models");
 var budget = require("../models/budget.js");
 
 module.exports = function(app) {
+<<<<<<< HEAD
   // Get all examples
 
   /* ------------income---------------*/
@@ -90,6 +91,8 @@ module.exports = function(app) {
     });
   });
 
+=======
+>>>>>>> logout function
   /////////////////////////Login Controler Code/////////////////////////////////////////////////////////////
   app.get("/login-username", function(req, res) {
     console.log(req.body);
@@ -129,6 +132,7 @@ module.exports = function(app) {
   /*  var input = {
       name: userName,
       passSHA: password
+<<<<<<< HEAD
     }; */
     console.log(userName, password);
     budget.users.create(
@@ -152,5 +156,15 @@ module.exports = function(app) {
   }); //End user-reg
   /////////////////////User Logout//////////////////////////////////////////////////////////////////////////
 >>>>>>> api comments
+=======
+    };
+    db.Example.create(input).then(function(dbExample) {
+      //res.json(dbExample);
+      console.log(dbExample);
+      res.render("202");
+    });
+  }); //End user-reg
+  /////////////////////User Logout//////////////////////////////////////////////////////////////////////////  
+>>>>>>> logout function
 };
 /***************************************************************************************************** */

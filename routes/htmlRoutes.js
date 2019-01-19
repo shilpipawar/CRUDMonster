@@ -7,6 +7,7 @@ module.exports = function(app) {
     res.render(path.join(__dirname, "../views/index.handlebars"));
   });
 
+<<<<<<< HEAD
   //income request and post starts
   app.get("/api/income/all", function(req, res) {
     res.render("202");
@@ -38,8 +39,13 @@ module.exports = function(app) {
   /*------------end users--------*/
 
 
+=======
+>>>>>>> logout function
   // Render 404 page for any unmatched routes
   app.get("*", function(req, res) {
     res.render("404");
+  });
+  app.post("/register-username", function(req, res) {
+    res.render("202");
   });
 };

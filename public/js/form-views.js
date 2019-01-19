@@ -22,6 +22,7 @@ $(document).ready(function() {
     console.log(date);
     console.log(amount);
   });
+  //Register
   function validateRegistration() {
     var illChars = /\W/;
     var name = $("#name-input")
@@ -65,6 +66,7 @@ $(document).ready(function() {
     });
     return true;
   }
+  //Login
   function doSignIn() {
     console.log("SingIN..");
     var illChars = /\W/;
@@ -87,15 +89,20 @@ $(document).ready(function() {
     });
     return true;
   }
+  //Logout
+  function doLogout(){
+
+  }
   //User-Reg - signup-form
   $(document).on("click", "#signUp", validateRegistration);
   //User-signin
   $(document).on("click", "#signIn", doSignIn);
+  //Logout
+  $(document).on("click", "#logout", doLogout);
   // PASSWORD PROTECTION SHA algo
   /*
-* Secure Hash Algorithm (SHA512)
-* http://www.happycode.info/
-*/
+   * Secure Hash Algorithm (SHA512)
+  */
 
   function SHA512(str) {
     function int64(msint_32, lsint_32) {
