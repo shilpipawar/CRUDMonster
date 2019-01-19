@@ -119,9 +119,9 @@ module.exports = function(app) {
   });
   ////////////////////////Register Controler Code//////////////////////////////////////////////////////////////////////////////////
   app.post("/register-username", function(req, res) {
-    console.log(req.body);
+    console.log("body " + req.body);
     var userName = req.body.name;
-    var password = req.body.psw;
+    var password = req.body.password;
    /* if (userName.search(/^[A-Za-z0-9]+$/) === -1) {
       res.redirect(303, "./views/registration-failure.html");
       return;
