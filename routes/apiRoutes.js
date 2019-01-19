@@ -1,29 +1,31 @@
 var db = require("../models");
 
-module.exports = function (app) {
+module.exports = function(app) {
   // Get all examples
-  app.get("/api/examples", function (req, res) {
-    db.Example.findAll({}).then(function (dbExamples) {
+  app.get("/api/examples", function(req, res) {
+    db.Example.findAll({}).then(function(dbExamples) {
       res.json(dbExamples);
     });
   });
 
   // Create a new example
-  app.post("/api/examples", function (req, res) {
-    db.Example.create(req.body).then(function (dbExample) {
+  app.post("/api/examples", function(req, res) {
+    db.Example.create(req.body).then(function(dbExample) {
       res.json(dbExample);
     });
   });
 
   // Delete an example by id
-  app.delete("/api/examples/:id", function (req, res) {
-    db.Example.destroy({ where: { id: req.params.id } }).then(function (dbExample) {
+  app.delete("/api/examples/:id", function(req, res) {
+    db.Example.destroy({ where: { id: req.params.id } }).then(function(
+      dbExample
+    ) {
       res.json(dbExample);
     });
   });
 
   /////////////////////////Login Controler Code/////////////////////////////////////////////////////////////
-  app.get("/login-username", function (req, res) {
+  app.get("/login-username", function(req, res) {
     var userName = req.body.username;
     var password = req.body.password;
 
@@ -31,9 +33,9 @@ module.exports = function (app) {
       res.render(404);
       return;
     }
-    db.Example.find({}).then(function (passwordDB) {
+    db.Example.find({}).then(function(passwordDB) {
       if (password === passwordDB) {
-        res.render(202);//success
+        res.render(202); //success
       } else {
         res.render(404); //Error
       }
@@ -62,7 +64,8 @@ module.exports = function (app) {
       passSHA: password
     };
     db.Example.create(input).then(function(dbExample) {
-      // res.json(dbExample);
+      //res.json(dbExample);
+      console.log(dbExample);
       //res.render(202);
     });
   });
