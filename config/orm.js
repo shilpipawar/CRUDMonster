@@ -31,6 +31,7 @@ var orm = {
       if (err) {
         throw err;
       }
+      console.log("orm.js " + queryString)
       cb(res);
     });
   },
