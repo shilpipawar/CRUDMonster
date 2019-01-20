@@ -73,24 +73,7 @@ module.exports = function(app) {
   });
 
   /*-------------end users----------------*/
-
-  // Create a new example
-  app.post("/api/examples", function(req, res) {
-    db.Example.create(req.body).then(function(dbExample) {
-      res.json(dbExample);
-    });
-  });
-
-  // Delete an example by id
-  app.delete("/api/examples/:id", function(req, res) {
-    db.Example.destroy({ where: { id: req.params.id } }).then(function(
-      dbExample
-    ) {
-      res.json(dbExample);
-    });
-  });
-
-  /////////////////////////Login Controler Code/////////////////////////////////////////////////////////////
+  //Login Controler Code
   app.get("/login-username", function(req, res) {
     console.log(req.body);
     var userName = req.body.username;
@@ -100,13 +83,13 @@ module.exports = function(app) {
       res.render(404);
       return;
     }
-    db.Example.find({}).then(function(passwordDB) {
-      if (password === passwordDB) {
-        res.render(404); //success
-      } else {
-        res.render(404); //Error
-      }
-    });
+    // db.Example.find({}).then(function(passwordDB) {
+    //   if (password === passwordDB) {
+    //     res.render(404); //success
+    //   } else {
+    //     res.render(404); //Error
+    //   }
+    // });
     //get password from DB based on matching username
     // select passwordDB from table where usesrNameDB = userName
     // var passwordDB = SHA512(passwordDB);
@@ -117,33 +100,23 @@ module.exports = function(app) {
     //     res.render(404); //Error
     //   }
   });
-  ////////////////////////Register Controler Code//////////////////////////////////////////////////////////////////////////////////
+  //Register Controler Code
   app.post("/register-username", function(req, res) {
-    console.log("body " + req.body);
+    console.log(req.body);
     var userName = req.body.name;
     var password = req.body.password;
-   /* if (userName.search(/^[A-Za-z0-9]+$/) === -1) {
+    if (userName.search(/^[A-Za-z0-9]+$/) === -1) {
       res.redirect(303, "./views/registration-failure.html");
       return;
-    } */
-  /*  var input = {
-      name: userName,
-      passSHA: password
-    }; */
+    }
     console.log(userName, password);
     budget.users.create(
       ["userName", "password"],
       [userName, password],
       function(result) {
-        console.log("API routes and " +  result);
+        console.log("API routes and " + result);
         res.json(result);
-      }
-    );
-
-  //  db.Example.create(input).then(function(dbExample) {
-      // res.json(dbExample);
-      //res.render(202);
-  //  });
+      });
   });
   //////////////////////////////////////////////////////////////////////////////////////////////////////////
 };

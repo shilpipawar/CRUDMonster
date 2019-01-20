@@ -1,8 +1,4 @@
-<!-- Optional JavaScript -->
-<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-{{!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-  crossorigin="anonymous"></script> --}}	  crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
   crossorigin="anonymous"></script>
 <script src="./js/form-views.js"></script>
@@ -22,15 +18,10 @@
 
     <div class="col-md-4 left-side">
       <h3 class="link"><span id="login">login</span> &nbsp;<span id="signup">sign up</span></h3>
-      <br />
-      <br />
-      <br />
-
-      <h3 class="link"><span id="login">login</span> &nbsp;<span id="signup">sign up</span></h3>
       <!--##########################################################-->
             <!-- Sign up form action="/register-username" method="post" onsubmit="return validateRegistration()"-->
       <!--##########################################################-->
-       <form id="signup-form" class="hide" action="/register-username" method="post">
+       <form id="signup-form" class="hide">
         <div id="message">
 
         </div>
@@ -44,12 +35,12 @@
         <div class="form-group">
           <label for="psw-input"><b>Password</b> (must use letters and numbers)</label>
 
-          <input class="form-control" id="psw-input" type="password" pattern="(?=.*\d)(?=.*[a-z]).{8,}" placeholder="Enter Password"
+          <input class="form-control" id="psw-input" type="password"  placeholder="Enter Password"
             name="psw" required minlength="8" maxlength="12" size="15">
         </div>
         <div class="form-group">
           <label for="confpsw-input"><b>Confirm Password</b></label>
-          <input class="form-control" id="confpsw-input" type="password" pattern="(?=.*\d)(?=.*[a-z]).{8,}" placeholder="Confirm Password"
+          <input class="form-control" id="confpsw-input" type="password"  placeholder="Confirm Password"
             name="psw" required minlength="8" maxlength="12" size="15">
         </div>
         <div class="form-group">

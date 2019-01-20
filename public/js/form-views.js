@@ -1,16 +1,16 @@
-$(document).ready(function() {
+$(document).ready(function () {
   // Showing and hiding login form
-  $("#login").on("click", function() {
+  $("#login").on("click", function () {
     $("#signup-form").addClass("hide");
     $("#login-form").removeClass("hide");
   });
-  $("#signup").on("click", function() {
+  $("#signup").on("click", function () {
     $("#login-form").addClass("hide");
     $("#signup-form").removeClass("hide");
   });
 
   // Grab values from new expense form
-  $("#new-expense-submit").on("click", function() {
+  $("#new-expense-submit").on("click", function () {
     event.preventDefault();
     var category = $("#category").val();
     var description = $("#description").val();
@@ -23,7 +23,7 @@ $(document).ready(function() {
     console.log(amount);
   });
   function validateRegistration() {
-    var illChars = /\W/;
+    //var illChars = /\W/;
     var name = $("#name-input")
       .val()
       .trim();
@@ -38,31 +38,30 @@ $(document).ready(function() {
       alert("Please enter a username");
     } else if (name.length < 5 || name.length > 15) {
       alert("Your username is the wrong length (5-15 characters allowed).");
-    } else if (illChars.test(name)) {
-      alert("Username can use letters, numbers and/or underscores.");
     } else {
-      console.log(name);
+      //if user name success
+      if (passwordField === confirmPassword) {
+        var password = SHA512(passwordField);
+        console.log(password);
+        //password success
+        var input = {
+          name: name,
+          password: password
+        };
+        console.log(input);
+        $.ajax({
+          method: "POST",
+          url: "/register-username",
+          data: input
+        }).then(function () {
+          console.log("success");
+        });
+      } else {
+        //$("#message").html = "Passwords don't match!";
+        alert("mismatch");
+        return false;
+      }
     }
-    if (passwordField === confirmPassword) {
-      var password = SHA512(passwordField);
-      console.log(password);
-    } else {
-      //$("#message").html = "Passwords don't match!";
-      alert("mismatch");
-      return false;
-    }
-    var input = {
-      name: name,
-      password: password
-    };
-    console.log(input);
-    $.ajax({
-      method: "POST",
-      url: "/register-username",
-      data: input
-    }).then(function() {
-      console.log("success");
-    });
     return true;
   }
   function doSignIn() {
@@ -82,20 +81,61 @@ $(document).ready(function() {
       method: "GET",
       url: "/login-username",
       data: input
-    }).then(function() {
+    }).then(function () {
       console.log("success");
     });
     return true;
+  }
+  function doLogOut() {
+    console.log("Singoff..");
+    var singInflag = {
+      flag: false
+    };
+
+    $.ajax({
+      method: "GET",
+      url: "/",
+      data: singInflag
+    }).then(function () {
+      console.log("success");
+    });
   }
   //User-Reg - signup-form
   $(document).on("click", "#signUp", validateRegistration);
   //User-signin
   $(document).on("click", "#signIn", doSignIn);
+  //User-Signoff
+  //logout
+  $(document).on("click", "#user-logout", doLogOut);
+
+  //Validation Code
+  function isValidateUserID(username) {
+    var format = /[ !#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/;
+
+    if (format.test(username)) {
+      console.log("PASS");
+      return true;
+    } else {
+      console.log("FAIL");
+      return false;
+    }
+  }
+  function isValidatePassword(password) {
+    //pattern="(?=.*\d)(?=.*[a-z]).{8,}"
+    var format = /[ !#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/;
+
+    if (format.test(password)) {
+      console.log("PASS");
+      return true;
+    } else {
+      console.log("FAIL");
+      return false;
+    }
+  }
   // PASSWORD PROTECTION SHA algo
   /*
-* Secure Hash Algorithm (SHA512)
-* http://www.happycode.info/
-*/
+  * Secure Hash Algorithm (SHA512)
+  */
 
   function SHA512(str) {
     function int64(msint_32, lsint_32) {
@@ -321,11 +361,11 @@ $(document).ready(function() {
     function maj(x, y, z) {
       return new int64(
         (x.highOrder & y.highOrder) ^
-          (x.highOrder & z.highOrder) ^
-          (y.highOrder & z.highOrder),
+        (x.highOrder & z.highOrder) ^
+        (y.highOrder & z.highOrder),
         (x.lowOrder & y.lowOrder) ^
-          (x.lowOrder & z.lowOrder) ^
-          (y.lowOrder & z.lowOrder)
+        (x.lowOrder & z.lowOrder) ^
+        (y.lowOrder & z.lowOrder)
       );
     }
 
