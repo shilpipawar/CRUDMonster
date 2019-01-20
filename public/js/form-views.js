@@ -34,35 +34,34 @@ $(document).ready(function () {
       .val()
       .trim();
 
-    // if (name === "") {
-    //   alert("Please enter a username");
-    // } else if (name.length < 5 || name.length > 15) {
-    //   alert("Your username is the wrong length (5-15 characters allowed).");
-    // } else if (illChars.test(name)) {
-    //   alert("Username can use letters, numbers and/or underscores.");
-    // } else {
-    //   console.log(name);
-    // }
-    if (passwordField === confirmPassword) {
-      var password = SHA512(passwordField);
-      console.log(password);
+    if (name === "") {
+      alert("Please enter a username");
+    } else if (name.length < 5 || name.length > 15) {
+      alert("Your username is the wrong length (5-15 characters allowed).");
     } else {
-      //$("#message").html = "Passwords don't match!";
-      alert("mismatch");
-      return false;
+      //if user name success
+      if (passwordField === confirmPassword) {
+        var password = SHA512(passwordField);
+        console.log(password);
+        //password success
+        var input = {
+          name: name,
+          password: password
+        };
+        console.log(input);
+        $.ajax({
+          method: "POST",
+          url: "/register-username",
+          data: input
+        }).then(function () {
+          console.log("success");
+        });
+      } else {
+        //$("#message").html = "Passwords don't match!";
+        alert("mismatch");
+        return false;
+      }
     }
-    var input = {
-      name: name,
-      password: password
-    };
-    console.log(input);
-    $.ajax({
-      method: "POST",
-      url: "/register-username",
-      data: input
-    }).then(function () {
-      console.log("success");
-    });
     return true;
   }
   function doSignIn() {
@@ -97,7 +96,7 @@ $(document).ready(function () {
       method: "GET",
       url: "/",
       data: singInflag
-    }).then(function() {
+    }).then(function () {
       console.log("success");
     });
   }
@@ -109,6 +108,30 @@ $(document).ready(function () {
   //logout
   $(document).on("click", "#user-logout", doLogOut);
 
+  //Validation Code
+  function isValidateUserID(username) {
+    var format = /[ !#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/;
+
+    if (format.test(username)) {
+      console.log("PASS");
+      return true;
+    } else {
+      console.log("FAIL");
+      return false;
+    }
+  }
+  function isValidatePassword(password) {
+    //pattern="(?=.*\d)(?=.*[a-z]).{8,}"
+    var format = /[ !#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/;
+
+    if (format.test(password)) {
+      console.log("PASS");
+      return true;
+    } else {
+      console.log("FAIL");
+      return false;
+    }
+  }
   // PASSWORD PROTECTION SHA algo
   /*
   * Secure Hash Algorithm (SHA512)
