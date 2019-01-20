@@ -107,7 +107,8 @@ $(document).ready(function () {
   $(document).on("click", "#signIn", doSignIn);
   //User-Signoff
   //logout
-  $(document).on("click", "#logOut", doLogOut);
+  $(document).on("click", "#user-logout", doLogOut);
+
   // PASSWORD PROTECTION SHA algo
   /*
   * Secure Hash Algorithm (SHA512)
