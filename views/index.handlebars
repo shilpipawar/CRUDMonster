@@ -22,10 +22,6 @@
             <!-- Sign up form action="/register-username" method="post" onsubmit="return validateRegistration()"-->
       <!--##########################################################-->
        <form id="signup-form" class="hide">
-        <div id="message">
-
-        </div>
-
         <div class="form-group">
           <label for="name-input"><b>Username</b></label>
 
@@ -53,20 +49,20 @@
           <label class="form-check-label" for="exampleCheck1">Remember me</label>
           <label for="message" id="lblmessage"></label>
         </div>
-
         <div class="form-group">
           <span class="psw"><a class="psw" href="#">Forgot password?</a></span>
-        </div>
+        </div> 
+        <label class="psw" id="message"></label>
       </form>
-
+ 
       <!--##########################################################-->
-      <!-- Login form -->
+      <!-- Login form  action="/login-username" method="post"-->
       <!--##########################################################-->
-      <form id="login-form" action="/login-username" method="post">
+      <form id="login-form">
         <div class="form-group">
           <label for="uname-input"><b>Username</b></label>
-          <input class="form-control" id="uname-input" type="text" placeholder="Enter Username" name="uname" required
-            minlength="8" maxlength="12" size="15">
+          <input class="form-control" id="uname-input" type="text" pattern="[a-zA-Z0-9]+" placeholder="Enter Username" name="uname" required
+            maxlength="12" size="15">
         </div>
         <div class="form-group">
           <label for="upsw-input"><b>Password</b></label>
@@ -74,11 +70,7 @@
             minlength="8" maxlength="12" size="15">
         </div>
         <div class="form-group">
-
            <button class="btn btn-primary" id="signIn" type="submit">Login</button>
-
-
-
           <button class="btn btn-danger cancelbtn" type="button" onclick="document.getElementById('id01').style.display='none'"
             class="cancelbtn">Cancel</button>
         </div>
@@ -89,7 +81,9 @@
         <div class="form-group">
           <span class="psw"><a class="psw" href="#">Forgot password?</a></span>
         </div>
+        <div id="message">
 
+        </div>
       </form>
       <br />
 

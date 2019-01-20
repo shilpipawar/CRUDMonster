@@ -1,5 +1,6 @@
 var db = require("../models");
 var budget = require("../models/budget.js");
+var path = require("path");
 
 module.exports = function(app) {
   // Get all examples
@@ -74,31 +75,17 @@ module.exports = function(app) {
 
   /*-------------end users----------------*/
   //Login Controler Code
-  app.get("/login-username", function(req, res) {
+  app.post("/login-username", function(req, res) {
     console.log(req.body);
     var userName = req.body.username;
     var password = req.body.password;
 
-    if (userName.search(/^[A-Za-z0-9]+$/) === -1) {
-      res.render(404);
-      return;
-    }
-    // db.Example.find({}).then(function(passwordDB) {
-    //   if (password === passwordDB) {
-    //     res.render(404); //success
-    //   } else {
-    //     res.render(404); //Error
-    //   }
-    // });
-    //get password from DB based on matching username
-    // select passwordDB from table where usesrNameDB = userName
-    // var passwordDB = SHA512(passwordDB);
-    //   if(password === passwordDB)
-    //   {
-    //     res.render(202);//success
-    //   }else{
-    //     res.render(404); //Error
-    //   }
+    console.log(userName, password);
+    budget.users.all(function(result) {
+      console.log("Api routes " + result);
+      //res.render(path.join(__dirname, "../views/hdb.handlebars"));
+      res.json(result);
+    })
   });
   //Register Controler Code
   app.post("/register-username", function(req, res) {
