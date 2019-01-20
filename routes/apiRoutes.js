@@ -21,7 +21,7 @@ module.exports = function(app) {
       ["amount", "users_id", "category_id", "notes", "date"],
       [req.amount, req.users_id, req.category_id, req.notes, req.date],
       function(result) {
-        console.log("API routes and " +  result);
+        console.log("API routes and " + result);
         res.json(result);
       }
     );
@@ -44,7 +44,7 @@ module.exports = function(app) {
       ["amount", "users_id", "category_id", "notes", "date"],
       [req.amount, req.users_id, req.category_id, req.notes, req.date],
       function(result) {
-        console.log("API routes and " +  result);
+        console.log("API routes and " + result);
         res.json(result);
       }
     );
@@ -67,15 +67,24 @@ module.exports = function(app) {
       ["userName", "password"],
       [req.userName, req.password],
       function(result) {
-        console.log("API routes and " +  result);
+        console.log("API routes and " + result);
         res.json(result);
+      }
+    );
+  });
+
+  app.get("/login-username", function(req, res) {
+    budget.users.selectPassword(
+      { userName: req.body.name },
+      function(result) {
+        res.json(result)
       }
     );
   });
 
   /*-------------end users----------------*/
   //Login Controler Code
-  app.post("/login-username", function(req, res) {
+ /* app.post("/login-username", function(req, res) {
     console.log(req.body);
     var userName = req.body.username;
     var password = req.body.password;
@@ -86,7 +95,7 @@ module.exports = function(app) {
       //res.render(path.join(__dirname, "../views/hdb.handlebars"));
       res.json(result);
     })
-  });
+  }); */
   //Register Controler Code
   app.post("/register-username", function(req, res) {
     console.log(req.body);

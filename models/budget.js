@@ -50,6 +50,12 @@ var budgets = {
       });
     },
 
+    selectPassword: function(objValues, cb) {
+      orm.selectPassword("users", objValues, function(res) {
+        cb(res);
+      });
+    },
+
     create: function(cols, vals, cb) {
       console.log("im here");
       orm.create("users", cols, vals, function(res) {
