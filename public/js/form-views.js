@@ -57,41 +57,42 @@ $(document).ready(function () {
           console.log("success");
         });
       } else {
-        //$("#message").html = "Passwords don't match!";
-        alert("mismatch");
+        $("#message").html("Passwords don't match!");
+        //alert("mismatch");
         return false;
       }
     }
     return true;
   }
   function doSignIn() {
-    console.log("SingIN..");
-    var illChars = /\W/;
-    var name = $("#uname-input")
+    console.log("Singin..");
+    var username = $("#uname-input")
       .val()
       .trim();
     var password = $("#psw-input")
       .val()
       .trim();
     var input = {
-      name: name,
+      name: username,
       password: SHA512(password)
     };
+    console.log(input);
     $.ajax({
-      method: "GET",
+      method: "POST",
       url: "/login-username",
       data: input
     }).then(function () {
       console.log("success");
+      $("#username-display").html("Shilpa-Pawar");
     });
-    return true;
+    //return true;
   }
   function doLogOut() {
     console.log("Singoff..");
     var singInflag = {
       flag: false
     };
-
+    $("#username-display").html(" ");
     $.ajax({
       method: "GET",
       url: "/",
