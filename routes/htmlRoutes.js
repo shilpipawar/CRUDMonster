@@ -35,6 +35,10 @@ module.exports = function(app) {
   app.post("/register-username", function(req, res) {
     res.render("202");
   })
+  app.get("//login-username", function(req, res) {
+    res.render(path.join(__dirname, "../views/hdb.handlebars"));
+  });
+
   /*------------end users--------*/
 
 
