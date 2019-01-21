@@ -83,8 +83,8 @@ module.exports = function(app) {
     console.log(userName, password);
     budget.users.all(function(result) {
       console.log("Api routes " + result);
-      //res.render(path.join(__dirname, "../views/hdb.handlebars"));
-      res.json(result);
+      res.render(path.join(__dirname, "../views/hdb.handlebars"));
+      //res.json(result);
     })
   });
   //Register Controler Code
