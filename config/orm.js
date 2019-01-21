@@ -79,7 +79,19 @@ var orm = {
 
       cb(result);
     });
-  }
+  },
+    login : function (condition,cb) {
+      var queryString = "SELECT  password  from users where UserName = '" ;
+        queryString += condition;
+        queryString += "'"
+        console.log("orm.js" + queryString);
+        connection.query(queryString, function(err,result){
+          if (err) {
+            throw err;
+          }
+          cb(result);
+        })
+    }
 };
 
 module.exports = orm;

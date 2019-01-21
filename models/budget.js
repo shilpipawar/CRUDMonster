@@ -81,6 +81,16 @@ var budgets = {
         cb(res);
       });
     }
+  },
+  
+  login :{
+      all : function (userName,cb){
+        console.log("in budget.js",userName);
+        orm.login(userName,function(res){
+          console.log(res);
+          cb(res);
+        })
+      }
   }
 
 };

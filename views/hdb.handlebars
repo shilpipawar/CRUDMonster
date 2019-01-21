@@ -1,4 +1,10 @@
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+{{!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+  crossorigin="anonymous"></script> --}}
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+  crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
   crossorigin="anonymous"></script>
 <script src="./js/form-views.js"></script>
@@ -15,13 +21,16 @@
     <!--##########################################################-->
     <!-- Login and Sign up Links -->
     <!--##########################################################-->
-
     <div class="col-md-4 left-side">
       <h3 class="link"><span id="login">login</span> &nbsp;<span id="signup">sign up</span></h3>
+
       <!--##########################################################-->
-            <!-- Sign up form action="/register-username" method="post" onsubmit="return validateRegistration()"-->
+      <!-- Sign up form action="/register-username" method="post" onsubmit="return validateRegistration()"-->
       <!--##########################################################-->
-       <form id="signup-form" class="hide">
+      <form id="signup-form" class="hide" action="/register-username" method="post">
+        <div id="message">
+        </div>
+
         <div class="form-group">
           <label for="name-input"><b>Username</b></label>
 
@@ -31,12 +40,12 @@
         <div class="form-group">
           <label for="psw-input"><b>Password</b> (must use letters and numbers)</label>
 
-          <input class="form-control" id="psw-input" type="password"  placeholder="Enter Password"
+          <input class="form-control" id="psw-input" type="password" pattern="(?=.*\d)(?=.*[a-z]).{8,}" placeholder="Enter Password"
             name="psw" required minlength="8" maxlength="12" size="15">
         </div>
         <div class="form-group">
           <label for="confpsw-input"><b>Confirm Password</b></label>
-          <input class="form-control" id="confpsw-input" type="password"  placeholder="Confirm Password"
+          <input class="form-control" id="confpsw-input" type="password" pattern="(?=.*\d)(?=.*[a-z]).{8,}" placeholder="Confirm Password"
             name="psw" required minlength="8" maxlength="12" size="15">
         </div>
         <div class="form-group">
@@ -49,20 +58,20 @@
           <label class="form-check-label" for="exampleCheck1">Remember me</label>
           <label for="message" id="lblmessage"></label>
         </div>
+
         <div class="form-group">
           <span class="psw"><a class="psw" href="#">Forgot password?</a></span>
-        </div> 
-        <label class="psw" id="message"></label>
+        </div>
       </form>
- 
+
       <!--##########################################################-->
-      <!-- Login form  action="/login-username" method="post"-->
+      <!-- Login form -->
       <!--##########################################################-->
-      <form id="login-form">
+      <form id="login-form" action="/login-username" method="post">
         <div class="form-group">
           <label for="uname-input"><b>Username</b></label>
-          <input class="form-control" id="uname-input" type="text" pattern="[a-zA-Z0-9]+" placeholder="Enter Username" name="uname" required
-            maxlength="12" size="15">
+          <input class="form-control" id="uname-input" type="text" placeholder="Enter Username" name="uname" required
+            minlength="8" maxlength="12" size="15">
         </div>
         <div class="form-group">
           <label for="upsw-input"><b>Password</b></label>
@@ -70,7 +79,11 @@
             minlength="8" maxlength="12" size="15">
         </div>
         <div class="form-group">
-           <button class="btn btn-primary" id="signIn" type="submit">Login</button>
+
+          <button class="btn btn-primary" id="signIn" type="submit">Login</button>
+
+
+
           <button class="btn btn-danger cancelbtn" type="button" onclick="document.getElementById('id01').style.display='none'"
             class="cancelbtn">Cancel</button>
         </div>
@@ -81,9 +94,7 @@
         <div class="form-group">
           <span class="psw"><a class="psw" href="#">Forgot password?</a></span>
         </div>
-        <div id="message">
 
-        </div>
       </form>
       <br />
 
@@ -149,25 +160,22 @@
       <!--##########################################################-->
       <!-- Username Display -->
       <!--##########################################################-->
-      <div id="user-logout">
-        <h4 class="username"><span id="username-display">User123</span> &nbsp;<span id="logout">log out</span></h4>
-      </div>
-
+      <h2>{{ username }}</h2>
+      <h4 id="logout">log out</h4>
 
       <!--##########################################################-->
       <!-- Input new expense form -->
       <!--##########################################################-->
-      <br />
-      <br />
       <form id="new-expense-form">
         <h2 class="header">new purchase</h2>
         <div class="form-row">
           <div class="col">
             <select class="form-control" id="category">
+              {{ #each category-options }}
               <!-- User chooses a category (Entered dummy data. Change as needed)-->
               <option class="choose">Category...</option>
-              <option>Rent</option>
-              <option>Mortgage</option>
+              <option>{{ category-name }}</option>
+              {{!-- <option>Mortgage</option>
               <option>Food</option>
               <option>Gas</option>
               <option>Entertainment</option>
@@ -176,7 +184,8 @@
               <option>Phone</option>
               <option>Internet</option>
               <option>Medical</option>
-              <option>Car Payment</option>
+              <option>Car Payment</option> --}}
+              {{ /each }}
             </select>
           </div>
           <!-- User enters the description -->
@@ -208,6 +217,18 @@
       <!--#############################################################-->
 
       <!-- The following is dummy data. Any of it can be changed. -->
+
+      <!-- Example Handlebars list 
+  <ul>
+  {{#each animals}}
+    <li>
+      <p>Type: {{animalType}}</p>
+      <p>Pet: {{pet}}</p>
+      <p>Fierceness: {{fierceness}}</p>
+    </li>
+  {{/each}}
+</ul>
+-->
       <table class="table table-borderless">
         <thead>
           <tr>
@@ -216,50 +237,17 @@
           </tr>
         </thead>
         <tbody>
+          {{ #each category-list }}
           <tr>
-            <td class="category-td">RENT</td>
-            <td class="expense-td">$955.00</td>
+            <td class="category-td">{{ category-name }}</td>
+            <td class="expense-td">{{ sum }}</td>
           </tr>
-          <tr>
-            <td class="category-td">FOOD</td>
-            <td class="expense-td">$320.00</td>
-          </tr>
-          <tr>
-            <td class="category-td">GAS</td>
-            <td class="expense-td">$155.00</td>
-          </tr>
-          <tr>
-            <td class="category-td">ENTERTAINMENT</td>
-            <td class="expense-td">$180.00</td>
-          </tr>
-          <tr>
-            <td class="category-td">CLOTHING</td>
-            <td class="expense-td">$85.00</td>
-          </tr>
-          <tr>
-            <td class="category-td">TV</td>
-            <td class="expense-td">$10.00</td>
-          </tr>
-          <tr>
-            <td class="category-td">INTERNET</td>
-            <td class="expense-td">$120.00</td>
-          </tr>
-          <tr>
-            <td class="category-td">MEDICAL</td>
-            <td class="expense-td">$50.00</td>
-          </tr>
-          <tr>
-            <td class="category-td">CAR</td>
-            <td class="expense-td">$60.00</td>
-          </tr>
-          <tr>
-            <td class="category-td">CELL PHONE</td>
-            <td class="expense-td">$160.00</td>
-          </tr>
+          {{ /each }}
+
           <!-- This row will have the total expenses of all the categories -->
           <tr class="total-expense-row">
             <td id="total-category">TOTAL</td>
-            <td id="total-expense">$2155.00</td>
+            <td id="total-expense">{{ total-expense }}</td>
           </tr>
         </tbody>
       </table>
@@ -277,17 +265,17 @@
           <!-- Income value -->
           <tr>
             <td class="category-td">INCOME</td>
-            <td class="expense-td">$4250.00</td>
+            <td class="expense-td">${{ income-total }}</td>
           </tr>
           <!-- Using total of all categories' expenses. -->
           <tr>
             <td class="category-td">EXPENSES</td>
-            <td class="expense-td">$2155.00</td>
+            <td class="expense-td">${{ expense-total }}</td>
           </tr>
           <!-- The difference between income and expenses -->
           <tr class="total-savings-row">
             <td id="total-savings-category">YO-DOUGH</td>
-            <td id="total-savings">$2095.00</td>
+            <td id="total-savings">${{ difference }}</td>
           </tr>
         </tbody>
       </table>
