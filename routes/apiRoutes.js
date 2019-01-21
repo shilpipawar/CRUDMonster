@@ -82,12 +82,6 @@ module.exports = function(app) {
     var userName = req.body.name;
     var password = req.body.password;
     console.log(userName, password);
-<<<<<<< HEAD
-    budget.users.all(function(result) {
-      console.log("Api routes " + result);
-      res.render(path.join(__dirname, "../views/hdb.handlebars"));
-      //res.json(result);
-=======
 
     budget.users.selectPassword(
       ["userName"],
@@ -101,7 +95,6 @@ module.exports = function(app) {
         console.log("ERROR");
       }
       //res.json(result[0].password);
->>>>>>> 59b770dbbee0d564ab73cd9beb9e329c59222511
     })
   });
   //Register Controler Code
