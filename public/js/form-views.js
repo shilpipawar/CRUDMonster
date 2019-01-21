@@ -35,9 +35,9 @@ $(document).ready(function () {
       .trim();
 
     if (name === "") {
-      alert("Please enter a username");
+      $("#message").html("Please enter a username");
     } else if (name.length < 5 || name.length > 15) {
-      alert("Your username is the wrong length (5-15 characters allowed).");
+      $("#message").html("Your username is the wrong length (5-15 characters allowed).");
     } else {
       //if user name success
       if (passwordField === confirmPassword) {
@@ -69,23 +69,27 @@ $(document).ready(function () {
     var username = $("#uname-input")
       .val()
       .trim();
-    var password = $("#psw-input")
+    var password = $("#upsw-input")
       .val()
       .trim();
-    var input = {
-      name: username,
-      password: SHA512(password)
-    };
-    console.log(input);
-    $.ajax({
-      method: "POST",
-      url: "/login-username",
-      data: input
-    }).then(function () {
-      console.log("success");
-      $("#username-display").html("Shilpa-Pawar");
-    });
-    //return true;
+      if(username === ""){
+        $("#message").html("Please enter a username");
+      }else{
+        console.log("inside :" + password + username);
+        var input = {
+          name: username,
+          password: SHA512(password)
+        };
+        console.log(input);
+        $.ajax({
+          method: "POST",
+          url: "/login-username",
+          data: input
+        }).then(function (result) {
+          console.log("success");
+          $("#username-display").html(result);
+        });
+      }
   }
   function doLogOut() {
     console.log("Singoff..");

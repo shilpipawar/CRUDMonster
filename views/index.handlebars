@@ -31,12 +31,12 @@
         <div class="form-group">
           <label for="psw-input"><b>Password</b> (must use letters and numbers)</label>
 
-          <input class="form-control" id="psw-input" type="password"  placeholder="Enter Password"
+          <input class="form-control" id="psw-input" type="password" pattern="[A-Za-z0-9_]{1,15}" placeholder="Enter Password"
             name="psw" required minlength="8" maxlength="12" size="15">
         </div>
         <div class="form-group">
           <label for="confpsw-input"><b>Confirm Password</b></label>
-          <input class="form-control" id="confpsw-input" type="password"  placeholder="Confirm Password"
+          <input class="form-control" id="confpsw-input" type="password" pattern="[A-Za-z0-9_]{1,15}" placeholder="Confirm Password"
             name="psw" required minlength="8" maxlength="12" size="15">
         </div>
         <div class="form-group">
@@ -66,7 +66,11 @@
         </div>
         <div class="form-group">
           <label for="upsw-input"><b>Password</b></label>
+<<<<<<< HEAD
           <input class="form-control" id="upsw-input" type="password" placeholder="Enter Password" name="upsw" required
+=======
+          <input class="form-control" id="upsw-input" type="password" pattern="[A-Za-z0-9_]{1,15}" placeholder="Enter Password" name="upsw" required
+>>>>>>> 59b770dbbee0d564ab73cd9beb9e329c59222511
             minlength="8" maxlength="12" size="15">
         </div>
         <div class="form-group">
@@ -81,9 +85,7 @@
         <div class="form-group">
           <span class="psw"><a class="psw" href="#">Forgot password?</a></span>
         </div>
-        <div id="message">
-
-        </div>
+        <label class="psw" id="message"></label>
       </form>
       <br />
 

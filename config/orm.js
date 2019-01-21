@@ -16,7 +16,7 @@ function objToSql(ob) {
     var value = ob[key];
     if (Object.hasOwnProperty.call(ob, key)) {
       if (typeof value === "string" && value.indexOf(" ") >= 0) {
-        value = "'" + value + "'";
+        value = " '" + value + "' ";
       }
       arr.push(key + "=" + value);
     }
@@ -34,6 +34,19 @@ var orm = {
       }
       console.log("orm.js " + queryString)
       cb(res);
+    });
+  },
+
+  selectPassword: function(table, col, val, cb) {
+    var queryString = 
+    "SELECT password, userName FROM " + table + " WHERE " + col + " = '" + val + "';";
+    console.log(queryString);
+
+    connection.query(queryString, function(err, result) {
+      if (err) {
+        throw err;
+      }
+      cb(result);
     });
   },
 
