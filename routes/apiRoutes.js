@@ -5,6 +5,8 @@ var path = require("path");
 module.exports = function(app) {
   // Get all examples
 
+
+
   /* ------------income---------------*/
   app.get("/api/income/all", function(req, res) {
     var req = req.body;
@@ -105,6 +107,16 @@ module.exports = function(app) {
         res.json(result);
       });
   });
+
+  // Showing all categories
+
+  app.get("/all-categories", function(req, res) {
+    //console.log(res, req);
+    budget.category.all(function(category) {
+      console.log(category)
+      res.render("hdb", {category:category});
+    })
+  })
   //////////////////////////////////////////////////////////////////////////////////////////////////////////
 };
 /***************************SHA512*************************************************************************** */
