@@ -85,9 +85,14 @@ module.exports = function(app) {
       ["userName"],
       [userName],
       function(result) {
-      console.log("Api routes " + result);
-      res.render(path.join(__dirname, "../views/hdb.handlebars"));
-      res.json(result[0].password);
+      console.log("Api routes " + result[0].password);
+      if(password === result[0].password)
+      {
+        res.json(result[0].password);
+      }else{
+        console.log("ERROR");
+      }
+      //res.json(result[0].password);
     })
   });
   //Register Controler Code
@@ -95,10 +100,6 @@ module.exports = function(app) {
     console.log(req.body);
     var userName = req.body.name;
     var password = req.body.password;
-    if (userName.search(/^[A-Za-z0-9]+$/) === -1) {
-      res.redirect(303, "./views/registration-failure.html");
-      return;
-    }
     console.log(userName, password);
     budget.users.create(
       ["userName", "password"],

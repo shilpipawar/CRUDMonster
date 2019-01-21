@@ -85,9 +85,9 @@ $(document).ready(function () {
           method: "POST",
           url: "/login-username",
           data: input
-        }).then(function () {
+        }).then(function (result) {
           console.log("success");
-          $("#username-display").html("Shilpa-Pawar");
+          $("#username-display").html(result);
         });
       }
   }
