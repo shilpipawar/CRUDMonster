@@ -9,21 +9,6 @@ function printQuestionMarks(num) {
   return arr.toString();
 }
 
-function objToSql(ob) {
-  var arr = [];
-
-  for (var key in ob) {
-    var value = ob[key];
-    if (Object.hasOwnProperty.call(ob, key)) {
-      if (typeof value === "string" && value.indexOf(" ") >= 0) {
-        value = "'" + value + "'";
-      }
-      arr.push(key + "=" + value);
-    }
-  }
-  return arr.toString();
-}
-
 var orm = {
   all: function(input, cb) {
     var queryString = "SELECT * FROM " + input + ";";
@@ -56,29 +41,13 @@ var orm = {
     });
   },
 
-  update: function(table, objValues, condition, cb) {
-    var queryString =
-      "UPDATE " + table + " SET " + objToSql(objValues) + " WHERE " + condition;
-
-    console.log(queryString);
-    connection.query(queryString, function(err, res) {
-      if (err) {
-        throw err;
-      }
-      cb(res);
-    });
-  },
-
-  delete: function(table, condition, cb) {
-    var queryString = "DELETE FROM " + table;
-    queryString += " WHERE ";
+  password: function(table, condition, cb) {
+    var queryString = "Select Password from Users WHERE ";
     queryString += condition;
-
     connection.query(queryString, function(err, result) {
       if (err) {
         throw err;
       }
-
       cb(result);
     });
   },

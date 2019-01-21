@@ -42,3 +42,9 @@ create table expense (
     FOREIGN KEY (users_id) REFERENCES users(id),
     FOREIGN KEY (category_id) REFERENCES category(id)
 );
+
+
+create table months(
+	 id int   primary key  not null,
+     months varchar (10) not null
+);
