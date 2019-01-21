@@ -50,9 +50,9 @@ var budgets = {
       });
     },
 
-    selectPassword: function(objValues, cb) {
-      orm.selectPassword("users", objValues, function(res) {
-        cb(res);
+    selectPassword: function(col, val, cb) {
+      orm.selectPassword("users", col, val, function(result) {
+        cb(result);
       });
     },
 

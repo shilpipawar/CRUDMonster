@@ -73,29 +73,23 @@ module.exports = function(app) {
     );
   });
 
-  app.get("/login-username", function(req, res) {
-    budget.users.selectPassword(
-      { userName: req.body.name },
-      function(result) {
-        res.json(result)
-      }
-    );
-  });
-
   /*-------------end users----------------*/
   //Login Controler Code
- /* app.post("/login-username", function(req, res) {
+  app.post("/login-username", function(req, res) {
     console.log(req.body);
-    var userName = req.body.username;
+    var userName = req.body.name;
     var password = req.body.password;
-
     console.log(userName, password);
-    budget.users.all(function(result) {
+
+    budget.users.selectPassword(
+      ["userName"],
+      [userName],
+      function(result) {
       console.log("Api routes " + result);
-      //res.render(path.join(__dirname, "../views/hdb.handlebars"));
-      res.json(result);
+      res.render(path.join(__dirname, "../views/hdb.handlebars"));
+      res.json(result[0].password);
     })
-  }); */
+  });
   //Register Controler Code
   app.post("/register-username", function(req, res) {
     console.log(req.body);

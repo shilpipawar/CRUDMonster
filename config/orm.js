@@ -36,16 +36,16 @@ var orm = {
     });
   },
 
-  selectPassword: function(table, objValues, cb) {
+  selectPassword: function(table, col, val, cb) {
     var queryString = 
-    "SELECT password FROM " + table + " WHERE " + objToSql(objValues) + ";";
+    "SELECT password FROM " + table + " WHERE " + col + " = '" + val + "';";
     console.log(queryString);
 
-    connection.query(queryString, function(err, res) {
+    connection.query(queryString, function(err, result) {
       if (err) {
         throw err;
       }
-      cb(res);
+      cb(result);
     });
   },
 
