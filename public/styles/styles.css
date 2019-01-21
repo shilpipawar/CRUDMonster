@@ -45,7 +45,7 @@ username
   margin-right: 20px;
 }
 
-#logout {
+#logOut {
   color: rgb(255, 169, 226);
 }
 #logout:hover {
@@ -60,9 +60,8 @@ sign up and login
 */
 
 #message {
-  display:none;
-  background: #f1f1f1;
-  color: #000;
+  /* display:none; */
+  color:red;
   position: relative;
   padding: 20px;
   margin-top: 10px;
