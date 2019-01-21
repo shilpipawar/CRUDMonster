@@ -88,7 +88,7 @@ module.exports = function(app) {
       console.log("Api routes " + result[0].password);
       if(password === result[0].password)
       {
-        res.json(result[0].password);
+        res.json(result[0].userName);
       }else{
         console.log("ERROR");
       }

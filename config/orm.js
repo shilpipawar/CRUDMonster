@@ -38,7 +38,7 @@ var orm = {
 
   selectPassword: function(table, col, val, cb) {
     var queryString = 
-    "SELECT password FROM " + table + " WHERE " + col + " = '" + val + "';";
+    "SELECT password, userName FROM " + table + " WHERE " + col + " = '" + val + "';";
     console.log(queryString);
 
     connection.query(queryString, function(err, result) {
