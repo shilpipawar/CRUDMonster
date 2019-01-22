@@ -86,6 +86,16 @@ $(document).ready(function () {
           url: "/login-username",
           data: input
         }).then(function (result) {
+
+          $.ajax({
+            method: "POST",
+            url: "/api/user-expenses",
+            data: username
+          }).then(function (res){
+
+            console.log("line 96 form-view.js"+ data)
+            console.log("result " + res)
+          });
           console.log("success");
           $("#username-display").html(result);
         });

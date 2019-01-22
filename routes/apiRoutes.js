@@ -73,6 +73,19 @@ module.exports = function(app) {
     );
   });
 
+  app.post("/api/user-expenses", function(req, res) {
+    console.log("line 77: " + JSON.parse(req))
+    console.log("line 77: " + JSON.parse(req[0]))
+    console.log("line 77: " + JSON.parse(req[1]))
+    var condition = req;
+    console.log("line 79: " + condition);
+    budget.expense.expenseByCategory(
+      condition, function(result) {
+        console.log("callback: " + result);
+        res.json(result);
+      }
+    );
+  })
   /*-------------end users----------------*/
   //Login Controler Code
   app.post("/login-username", function(req, res) {
@@ -85,7 +98,7 @@ module.exports = function(app) {
       ["userName"],
       [userName],
       function(result) {
-      console.log("Api routes " + result[0].password);
+      console.log("Line 99: " + result[0].password);
       if(password === result[0].password)
       {
         res.json(result[0].userName);
