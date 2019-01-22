@@ -114,7 +114,7 @@ module.exports = function(app) {
 
   // Showing all categories
 
-  app.get("/all-categories", function(req, res) {
+  app.get("/", function(req, res) {
     //console.log(res, req);
     budget.category.all(function(category) {
       console.log(category)

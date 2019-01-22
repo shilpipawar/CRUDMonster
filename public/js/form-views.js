@@ -12,15 +12,38 @@ $(document).ready(function () {
   // Grab values from new expense form
   $("#new-expense-submit").on("click", function () {
     event.preventDefault();
-    var category = $("#category").val();
-    var description = $("#description").val();
-    var amount = $("#amount").val();
-    var date = $("#date").val();
+    // var category = $("#category").val();
+    // var description = $("#description").val().trim();
+    // var amount = $("#amount").val().trim();
+    // var date = $("#date").val().trim();
 
-    console.log(category);
-    console.log(description);
-    console.log(date);
-    console.log(amount);
+    // console.log(category);
+    // console.log(description);
+    // console.log(date);
+    // console.log(amount);
+
+    $("#new-expense-form").on("submit", function (event) {
+      event.preventDefault();
+      var newExpense = {
+        category: $("#category").val(),
+        description: $("#description").val().trim(),
+        amount: $("#amount").val().trim(),
+        date: $("#date").val().trim()
+      };
+
+      $.ajax("/api/expense", {
+          type: "POST",
+          data: newExpense
+      }).then(
+          function () {
+              location.reload();
+          }
+      );
+  });
+    $("#category").val("Category...");
+    $("#description").val("");
+    $("#amount").val("");
+    $("#date").val("");
   });
   function validateRegistration() {
     //var illChars = /\W/;
