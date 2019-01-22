@@ -80,23 +80,25 @@ module.exports = function(app) {
     var condition = req.body.name;
     console.log("line 79: " + condition);
     budget.expense.expenseByCategory(
-      condition, function(name) {
-        console.log("name " + name)
+      condition, function(expense) {
+        // console.log("name " + name)
         //console.log("callback: " + JSON.stringify(result));
-        res.render("hdb", {expense: name});
+        res.render("hdb", {expense: expense});
         // res.render("hdb", {categoryList: sum});
       }
     );
   })
-
-
   app.get("/", function(req, res) {
     //console.log(res, req);
-    budget.category.all(function(category) {
-      console.log(category)
-      res.render("hdb", {category:category});
+    budget.expense.expenseByCategory(function(expense) {
+      console.log("123ABC")
+      console.log(expense)
+      res.render("hdb", {expense:expense});
     })
   })
+
+
+
 
 
 
@@ -149,6 +151,7 @@ module.exports = function(app) {
   app.get("/", function(req, res) {
     //console.log(res, req);
     budget.category.all(function(category) {
+      console.log("123ABC")
       console.log(category)
       res.render("hdb", {category:category});
     })

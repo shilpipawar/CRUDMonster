@@ -1,0 +1,22 @@
+<table class="table table-borderless">
+    <thead>
+        <tr>
+            <th scope="col" id="category-column">STUFF</th>
+            <th scope="col" id="expense-column">MONEY</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each expense}}
+        <tr>
+            <td class="category-td">{{ this.name }}</td>
+            <td class="expense-td">{{ total }}</td>
+        </tr>
+        {{/each}}
+
+        <!-- This row will have the total expenses of all the categories -->
+        <tr class="total-expense-row">
+            <td id="total-category">TOTAL</td>
+            {{!-- <td id="total-expense">{{ total-expense }}</td> --}}
+        </tr>
+    </tbody>
+</table>
