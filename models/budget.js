@@ -23,6 +23,7 @@ var budgets = {
 
     expenseByMonth: function(condition, cb) {
       orm.expenseByMonth(condition, function(res) {
+      
         cb(res);
       });
     }

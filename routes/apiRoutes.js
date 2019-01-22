@@ -1,7 +1,7 @@
 var db = require("../models");
 var budget = require("../models/budget.js");
 var path = require("path");
-
+var connection = require("../config/connection")
 module.exports = function(app) {
   // Get all examples
 
@@ -51,6 +51,16 @@ module.exports = function(app) {
       }
     );
   });
+  app.get("/", function(req, res) {
+    var sqlQuery = "SELECT  distinct(C.name), SUM(E.amount) AS total from expense E inner join category C on E.category_id = C.id inner join users U on E.users_id = U.id where U.userName = 'johnD' group by C.name";
+    connection.query(sqlQuery, function(error, results, fields) {
+        if(error) throw error;
+        console.log("newRoutes!!!!!!!!!!!")
+        console.log(results);
+
+        res.render("hdb", {expense: results})
+    })
+})
   /* --------------end expense-----------------*/
 
   /* --------------users-------------------*/
@@ -76,6 +86,7 @@ module.exports = function(app) {
   });
 
   app.post("/api/user-expenses", function(req, res) {
+    console.log("apiRoutes 79 + ")
     console.log(req.body.name);
     var condition = req.body.name;
     console.log("line 79: " + condition);
@@ -88,16 +99,17 @@ module.exports = function(app) {
       }
     );
   })
-  app.get("/", function(req, res) {
-    //console.log(res, req);
-    budget.expense.expenseByCategory(function(expense) {
-      console.log("123ABC")
-      console.log(expense)
-      res.render("hdb", {expense:expense});
-    })
-  })
 
+  // app.get("/api/user-expenses", function(req, res) {
+  //   var condition = req.body.name;
+  //   budget.expense.expenseByCategory(condition, function(expense) {
+  //     console.log("expense stuffffff");
+  //     console.log(condition);
+  //     res.render("maintable", {expense: expense});
 
+  //   })
+
+  // })
 
 
 
