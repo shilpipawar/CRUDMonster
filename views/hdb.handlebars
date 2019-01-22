@@ -171,10 +171,10 @@
         <div class="form-row">
           <div class="col">
             <select class="form-control" id="category">
-              {{ #each category-options }}
-              <!-- User chooses a category (Entered dummy data. Change as needed)-->
               <option class="choose">Category...</option>
-              <option>{{ category-name }}</option>
+              {{#each category}}
+              <option>{{this.name}}</option>
+              {{/each}}
               {{!-- <option>Mortgage</option>
               <option>Food</option>
               <option>Gas</option>
@@ -185,7 +185,6 @@
               <option>Internet</option>
               <option>Medical</option>
               <option>Car Payment</option> --}}
-              {{ /each }}
             </select>
           </div>
           <!-- User enters the description -->
@@ -237,12 +236,12 @@
           </tr>
         </thead>
         <tbody>
-          {{ #each category-list }}
+          {{#each category-list}}
           <tr>
-            <td class="category-td">{{ category-name }}</td>
-            <td class="expense-td">{{ sum }}</td>
+            <td class="category-td">{{category-name}}</td>
+            <td class="expense-td">{{sum}}</td>
           </tr>
-          {{ /each }}
+          {{/each}}
 
           <!-- This row will have the total expenses of all the categories -->
           <tr class="total-expense-row">
