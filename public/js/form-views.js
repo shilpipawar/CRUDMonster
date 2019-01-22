@@ -97,7 +97,8 @@ $(document).ready(function () {
             console.log("result " + res)
           });
           console.log("success");
-          $("#username-display").html(result);
+          //res.render(path.join(__dirname, "../views/hdb.handlebars"))
+         $("#username-display").html(result);
         });
       }
   }
