@@ -229,17 +229,17 @@
           </tr> 
         </thead>
         <tbody>
-          {{#each categoryList}}
+          {{#each expense}}
           <tr>
-            <td class="category-td">{{ category }}</td>
-            <td class="expense-td">{{ sum }}</td>
+            <td class="category-td">{{ this.name }}</td>
+            {{!-- <td class="expense-td">{{ sum }}</td> --}}
           </tr>
           {{/each}}
 
           <!-- This row will have the total expenses of all the categories -->
           <tr class="total-expense-row">
             <td id="total-category">TOTAL</td>
-            <td id="total-expense">{{ total-expense }}</td>
+            {{!-- <td id="total-expense">{{ total-expense }}</td> --}}
           </tr>
         </tbody>
       </table>

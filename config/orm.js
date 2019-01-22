@@ -103,7 +103,7 @@ var orm = {
     queryString += " inner join users U on E.users_id = U.id where U.userName = '";
     queryString += condition;
     queryString += "' group by C.name";
-    // console.log(queryString);
+    console.log(queryString);
 
     connection.query(queryString, function(err, result) {
       if (err) {

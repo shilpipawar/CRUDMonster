@@ -80,9 +80,10 @@ module.exports = function(app) {
     var condition = req.body.name;
     console.log("line 79: " + condition);
     budget.expense.expenseByCategory(
-      condition, function(result) {
+      condition, function(name) {
+        console.log("name " + name)
         //console.log("callback: " + JSON.stringify(result));
-        // res.render("hdb", {categoryList: categoryName});
+        res.render("hdb", {expense: name});
         // res.render("hdb", {categoryList: sum});
       }
     );
