@@ -65,19 +65,19 @@ $(document).ready(function () {
       //if user name success
       if (passwordField === confirmPassword) {
         var password = SHA512(passwordField);
-        console.log(password);
+        // console.log(password);
         //password success
         var input = {
           name: name,
           password: password
         };
-        console.log(input);
+        // console.log(input);
         $.ajax({
           method: "POST",
           url: "/register-username",
           data: input
         }).then(function () {
-          console.log("success");
+          // console.log("success");
         });
       } else {
         $("#message").html("Passwords don't match!");
@@ -88,7 +88,7 @@ $(document).ready(function () {
     return true;
   }
   function doSignIn() {
-    console.log("Singin..");
+    // console.log("Singin..");
     var username = $("#uname-input")
       .val()
       .trim();
@@ -98,12 +98,12 @@ $(document).ready(function () {
       if(username === ""){
         $("#message").html("Please enter a username");
       }else{
-        console.log("inside :" + password + username);
+        // console.log("inside :" + password + username);
         var input = {
           name: username,
           password: SHA512(password)
         };
-        console.log(input);
+        // console.log(input);
         $.ajax({
           method: "POST",
           url: "/login-username",
@@ -117,15 +117,15 @@ $(document).ready(function () {
             url: "/api/user-expenses",
             data: input
           }).then(function (res){
-            console.log("result " + res)
+            // console.log("result " + res)
           });
-          console.log("success");
+          // console.log("success");
           $("#username-display").html(result);
         });
       }
   }
   function doLogOut() {
-    console.log("Singoff..");
+    // console.log("Singoff..");
     var singInflag = {
       flag: false
     };
@@ -135,7 +135,7 @@ $(document).ready(function () {
       url: "/",
       data: singInflag
     }).then(function () {
-      console.log("success");
+      // console.log("success");
     });
   }
   //User-Reg - signup-form
@@ -151,10 +151,10 @@ $(document).ready(function () {
     var format = /[ !#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/;
 
     if (format.test(username)) {
-      console.log("PASS");
+      // console.log("PASS");
       return true;
     } else {
-      console.log("FAIL");
+      // console.log("FAIL");
       return false;
     }
   }
@@ -163,10 +163,10 @@ $(document).ready(function () {
     var format = /[ !#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/;
 
     if (format.test(password)) {
-      console.log("PASS");
+      // console.log("PASS");
       return true;
     } else {
-      console.log("FAIL");
+      // console.log("FAIL");
       return false;
     }
   }

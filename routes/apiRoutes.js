@@ -81,11 +81,24 @@ module.exports = function(app) {
     console.log("line 79: " + condition);
     budget.expense.expenseByCategory(
       condition, function(result) {
-        console.log("callback: " + JSON.stringify(result));
-        res.json(result);
+        //console.log("callback: " + JSON.stringify(result));
+        // res.render("hdb", {categoryList: categoryName});
+        // res.render("hdb", {categoryList: sum});
       }
     );
   })
+
+
+  app.get("/", function(req, res) {
+    //console.log(res, req);
+    budget.category.all(function(category) {
+      console.log(category)
+      res.render("hdb", {category:category});
+    })
+  })
+
+
+
   /*-------------end users----------------*/
   //Login Controler Code
   app.post("/login-username", function(req, res) {
@@ -104,7 +117,7 @@ module.exports = function(app) {
         //res.render(path.join(__dirname, "../views/hdb.handlebars"));//username
         budget.category.all(function(category) {
           console.log(category)
-          res.render("hdb", {category:category});
+          // res.render("hdb", {category:category});
           res.render("hdb", {username:result[0].userName});
         });
        // res.render("hdb", {username:result[0].userName});
