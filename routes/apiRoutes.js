@@ -74,14 +74,12 @@ module.exports = function(app) {
   });
 
   app.post("/api/user-expenses", function(req, res) {
-    console.log("line 77: " + JSON.parse(req))
-    console.log("line 77: " + JSON.parse(req[0]))
-    console.log("line 77: " + JSON.parse(req[1]))
-    var condition = req;
+    console.log(req.body.name);
+    var condition = req.body.name;
     console.log("line 79: " + condition);
     budget.expense.expenseByCategory(
       condition, function(result) {
-        console.log("callback: " + result);
+        console.log("callback: " + JSON.stringify(result));
         res.json(result);
       }
     );

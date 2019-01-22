@@ -86,11 +86,13 @@ $(document).ready(function () {
           url: "/login-username",
           data: input
         }).then(function (result) {
-
+          var input = {
+            name: username
+          }
           $.ajax({
             method: "POST",
             url: "/api/user-expenses",
-            data: username
+            data: input
           }).then(function (res){
 
             console.log("line 96 form-view.js"+ data)
