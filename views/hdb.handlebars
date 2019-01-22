@@ -229,16 +229,14 @@
           </tr> 
         </thead>
         <tbody>
-          <h1>TOP</h1>
+          
           {{#each expense}}
-          <h1>MIDDLE</h1>
           <tr>
             <td class="category-td">{{this.name}}</td>
             
             <td class="expense-td">{{this.total}}</td>
           </tr>
           {{/each}}
-          <h1>BOTTOM</h1>
           <!-- This row will have the total expenses of all the categories -->
           <tr class="total-expense-row">
             <td id="total-category">TOTAL</td>
