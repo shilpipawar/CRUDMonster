@@ -94,8 +94,6 @@ $(document).ready(function () {
             url: "/api/user-expenses",
             data: input
           }).then(function (res){
-
-            console.log("line 96 form-view.js"+ data)
             console.log("result " + res)
           });
           console.log("success");
