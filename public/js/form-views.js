@@ -109,6 +109,16 @@ $(document).ready(function () {
           url: "/login-username",
           data: input
         }).then(function (result) {
+          var input = {
+            name: username
+          }
+          $.ajax({
+            method: "POST",
+            url: "/api/user-expenses",
+            data: input
+          }).then(function (res){
+            console.log("result " + res)
+          });
           console.log("success");
           $("#username-display").html(result);
         });

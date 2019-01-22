@@ -98,11 +98,11 @@ var orm = {
   },
 
   expenseByCategory: function(condition, cb) {
-    var queryString = "SELECT  distinct(B.name), SUM(A.amount) from expense A ";
-    queryString += " inner join category B on A.category_id = B.id";
-    queryString += " inner join users C on A.users_id = C.id where C.id = ";
+    var queryString = "SELECT  distinct(C.name), SUM(E.amount) from expense E";
+    queryString += " inner join category C on E.category_id = C.id";
+    queryString += " inner join users U on E.users_id = U.id where U.userName = '";
     queryString += condition;
-    queryString += "group by B.name";
+    queryString += "' group by C.name";
     console.log(queryString);
 
     connection.query(queryString, function(err, result) {
