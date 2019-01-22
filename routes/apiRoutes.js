@@ -80,7 +80,9 @@ module.exports = function(app) {
     budget.expense.expenseByCategory(
       condition, function(result) {
         console.log("callback: " + JSON.stringify(result));
-        res.json(result);
+        var category_list = {categoryList: result};
+        console.log(category_list)
+        res.render("hdb", category_list);
       }
     );
   })
