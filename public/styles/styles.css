@@ -9,7 +9,6 @@ body {
   letter-spacing: 11px;
   text-align: left;
   font-size: 3rem;
-  font-family: "Nunito", Arial, Helvetica, sans-serif;
   padding-bottom: 15px;
 }
 .row1 {
@@ -17,15 +16,14 @@ body {
   
 }
 #header-title {
-  letter-spacing: 15px;
+  letter-spacing: 1rem;
   padding: 10px;
   padding-bottom: 0;
   margin-top: 30px;
-  margin-bottom: 0;
+  margin-bottom: 70px;
   text-align: center;
   
   
-  font-family: "Nunito", Arial, Helvetica, sans-serif;
   color: #18486d;
   font-size: 4rem;
  
@@ -37,24 +35,21 @@ body {
 username
 #######################
 */
-
-
 .username {
-  font-family: "Nunito", Arial, Helvetica, sans-serif;
   text-align: left;
   font-size: 2rem;
-  color: #96d3ff;
+  color: #18486d;
   padding-top: 0;
   text-align: right;
   margin-right: 20px;
 }
 
-#logOut {
-  color: rgb(255, 169, 226);
+#user-logout {
+  color: rgb(243, 105, 158);
 }
-#logOut:hover {
+#user-logout:hover {
   cursor: pointer;
-  color: rgb(255, 93, 201)
+  color: rgb(218, 0, 83);
 }
 
 /* 
@@ -62,33 +57,37 @@ username
 sign up and login
 #######################
 */
-
+.white {
+  color: white;
+}
 #message {
-  /* display:none; */
+  display:none;
   color:red;
   position: relative;
   padding: 20px;
   margin-top: 10px;
 }
-
+a:link {
+  color: white;
+}
 #message p {
   padding: 10px 35px;
   font-size: 18px;
 }
 
 .btn-primary {
-  background-color: #65bfff;
-  border-color: #65bfff;
+  background-color: #9ac9ec;
+  border-color: #9ac9ec;
 }
+
 .btn-primary:hover {
-  background-color: #36abff;
-  border-color: #36abff;
+  background-color: rgb(29, 152, 240);
+  border-color: rgb(29, 152, 240);
 }
 
 .link {
-  
+  text-align: center;
   margin-right: 25px;
-  font-family: "Nunito", Arial, Helvetica, sans-serif;
   text-align: left;
   font-size: 3rem;
 }
@@ -98,12 +97,13 @@ sign up and login
 }
 
 #signup {
-  color: #96d3ff;
+  color: #a4cdee;
 }
+
 
 #signup:hover {
   cursor: pointer;
-  color: #56b9ff
+  color: #6db1e6
 }
 
 #login:hover {
@@ -115,6 +115,7 @@ label {
   color: #77b5e2;
 }
 
+
 .hide {
   display: none;   
 }
@@ -124,13 +125,13 @@ label {
 }
 
 .cancelbtn {
-  background-color: rgb(255, 169, 226);
-  border-color: rgb(255, 169, 226);
+  background-color: rgb(243, 105, 158);
+  border-color: rgb(243, 105, 158);
 }
 
 .cancelbtn:hover {
-  background-color: rgb(255, 66, 192);
-  border-color: rgb(255, 66, 192);
+  background-color: rgb(218, 0, 83);
+  border-color: rgb(218, 0, 83);
 }
 
 .psw {
@@ -140,18 +141,15 @@ label {
 }
 
 .psw:hover {
-  color: rgb(255, 66, 192);
+  color: #a4cdee;
   text-decoration: none;
 }
 
-.form-control::placeholder {
-  color: #afcfe6;
 
-}
 
 input[type=text] {
   font-size: 1.5rem;
-  border: 1px solid #afcfe6;
+  
   border-radius: 4px;
 }
 
@@ -176,8 +174,8 @@ new expense form
 #######################
 */
 
-#new-expense-form {
-  margin-top: 80px;
+.input-forms {
+  
   border-radius: 5px;
   border: 1px #18486d solid;
   margin-bottom: 25px;
@@ -186,8 +184,9 @@ new expense form
 }
 
 .right {
-  text-align: center;
+  text-align: right;
   margin-top: 15px;
+
 }
 
 .input-group-addon {
@@ -199,6 +198,7 @@ new expense form
   width: 100%;
   margin-bottom: 10px;
 }
+
 /* 
 #######################
 main table
@@ -206,115 +206,113 @@ main table
 */
 
 th {
-  font-family: "Nunito", Arial, Helvetica, sans-serif;
+  background-color: #18486d;
   color: white;
   font-size: 3.5rem;
 }
 
 #category-column {
-  background-color: rgb(142, 231, 189);
+  background-color: #18486d;
   text-align: left;
   border-radius: 5px 0 0 0;
 }
 #expense-column {
-  background-color: rgb(142, 231, 189);
+  background-color: #18486d;
   text-align: right;
-  border-radius: 0 13px 0 0;
+  border-radius: 0 5px 0 0;
 }
 
 td {
   font-size: 2.5rem;
-  color: #77b5e2;
+  color: #3575a7;
   line-height: 2.5rem;
-}
-.table-borderless th, .table-borderless thead th {
-  padding-top: 0;
-  padding-bottom: 0;
+  
 }
 
 .expense-td {
   text-align: right;
   padding-left: 0;
   padding-right: 30px;
-  background-color: white;
+  background-color: #e2eef6;
 }
 
 .category-td {
-  background-color: white;
+  
   text-align: left;
+  background-color: #e2eef6;
 }
-tr {
+/* tr {
   border-bottom: 7px solid #e8f5ff;
-}
+} */
 /* 
 #######################
 math it up table
 #######################
 */
 
+.table td {
+  border-top: 3px solid white;
+}
+
 #total-expense {
   text-align: right;
-  border-radius: 0 0 13px 0;
-  background-color: rgb(255, 169, 226);
+  border-radius: 0 0 5px 0;
+  background-color: #9ac9ec;
   color: white;
+  font-size: 3.5rem;
+  padding: 20px;
 }
 
 #total-category {
+  font-size: 3.5rem;
   text-align: left;
-  border-radius: 0 0 0 13px;
-  background-color: rgb(255, 169, 226);
+  border-radius: 0 0 0 5px;
+  background-color: #9ac9ec;
   color: white;
+  padding: 20px;
 }
 
 #total-savings-category {
-  background-color: rgb(142, 231, 189);
+  background-color: #9aecb9;
   color: white;
-  border-radius: 0 0 0 13px; 
+  border-radius: 0 0 0 5px; 
   text-align: left;
   font-size: 3.5rem;
+  padding: 20px;
 }
 
 #total-savings {
-  background-color: rgb(142, 231, 189);
+  background-color: #9aecb9;
   color: white;
-  border-radius: 0 0 13px 0;
+  border-radius: 0 0 5px 0;
   text-align: right;
   font-size: 3.5rem;
+  padding: 20px;
 }
 
-.total-savings-row {
-  height: 50px;
+#new-income-submit {
+  width: 100%;
+  margin-bottom: 20px;
 }
 
 #math {
-  border-radius: 5px 13px 0 0;
-  background-color: #96d3ff;
+  border-radius: 5px 5px 0 0;
+  background-color: #18486d;
 }
 
 #math-table {
   margin-top: 50px;
   margin-bottom: 100px;
 }
-
+.table th {
+  border-top: none;
+}
 /* 
 #######################
 other
 #######################
 */
 
-#news-header {
-  margin-top: 10px;
-  font-family: "Nunito", Arial, Helvetica, sans-serif;
-  color: #96d3ff;
-  font-size: 4rem;
-}
-
-#charts-header {
-  margin-top: 10px;
-  font-family: "Nunito", Arial, Helvetica, sans-serif;
-  color: #96d3ff;
-  font-size: 4rem;
-}
 
 
 /* TABLE OF CONTENTS */
@@ -325,6 +323,10 @@ other
 /* 4. main table */
 /* 5. math it up table */
 /* 6. other */
+
+
+
+
 
 
 

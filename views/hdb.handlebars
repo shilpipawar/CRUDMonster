@@ -1,3 +1,4 @@
+
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 {{!--
@@ -17,6 +18,14 @@
     </div>
   </div>
   <div class="row">
+    <!--##########################################################-->
+    <!-- Username Display -->
+    <!--##########################################################-->
+    <div class="col-md-12">
+      <h4 class="username"><span id="username-display">User123</span> &nbsp;<span id="user-logout">log out</span></h4>
+    </div>
+  </div>
+  <div class="row">
     <div class="col-md-12">
       <!--##########################################################-->
       <!-- Input new expense form -->
@@ -24,11 +33,11 @@
 
 
 
-      <form id="new-expense-form">
+      <form class="input-forms" id="new-expense-form">
         <h2 class="header">new purchase</h2>
 
         <div class="form-row">
-          <div class="col">
+          <div class="col-3">
             <select class="form-control form-control-lg" id="category">
               <option class="choose">Category...</option>
               <option>Rent</option>
@@ -49,26 +58,26 @@
             </select>
           </div>
           <!-- User enters the description -->
-          <div class="col">
+          <div class="col-4">
             <input type="text" class="form-control form-control-lg" id="description" placeholder="What you get?">
           </div>
           <br />
 
           <!-- User enters the amount -->
-          <div class="input-group col">
+          <div class="input-group col-2">
             <span class="input-group-text" id="inputGroup-sizing-default">$</span>
             <input type="number" value="0.00" min="0" step="0.01" data-number-to-fixed="2" data-number-stepfactor="100"
               class="form-control form-control-lg currency" id="amount" />
           </div>
           <!-- User enters the date -->
-          <div class="col">
+          <div class="col-3">
             <input type="date" class="form-control form-control-lg" id="date">
           </div>
           <!-- Submit button should submit all four values to the database -->
         </div>
 
         <div class="right">
-          <button class="btn btn-primary" id="new-expense-submit" type="submit">Submit</button>
+          <button class="btn btn-primary" id="new-expense-submit" type="submit">SUBMIT</button>
         </div>
       </form>
 
@@ -88,7 +97,7 @@
         <!-- Sign up form 
         action="/register-username" method="post" onsubmit="return validateRegistration()"-->
         <!--##########################################################-->
-        <form id="signup-form" class="hide" action="/register-username" method="post">
+        <form id="signup-form" class="hide signup" action="/register-username" method="post">
           <div id="message">
           </div>
 
@@ -120,7 +129,6 @@
             <label for="message" id="lblmessage"></label>
           </div>
 
-
           <div class="form-group">
             <span class="psw"><a class="psw" href="#">Forgot password?</a></span>
           </div>
@@ -132,7 +140,7 @@
         <form id="login-form" action="/login-username" method="post">
           <div class="form-group">
             <label for="uname-input"><b>Username</b></label>
-            <input class="form-control" id="uname-input" type="text"  pattern="[a-zA-Z0-9]+" placeholder="Enter Username" name="uname" required
+            <input class="form-control" id="uname-input" type="text" pattern="[a-zA-Z0-9]+" placeholder="Enter Username" name="uname" required
               minlength="8" maxlength="12" size="15">
           </div>
           <div class="form-group">
@@ -141,7 +149,6 @@
               required minlength="8" maxlength="12" size="15">
           </div>
           <div class="form-group">
-
 
             <button class="btn btn-primary" id="signIn" type="submit">Login</button>
 
@@ -155,7 +162,7 @@
             <label class="form-check-label" for="message" id="lblmessage1">Remember Me</label>
           </div>
           <div class="form-group">
-            <span class="psw"><a class="psw" href="#">Forgot password?</a></span>
+            <span class="psw"><a class="psw white" href="#">Forgot password?</a></span>
           </div>
 
         </form>
@@ -181,11 +188,11 @@
       <!--##########################################################-->
       <!-- Income Form -->
       <!--##########################################################-->
-      <form id="new-income-form">
+      <form class="input-forms" id="new-income-form">
         <h2 class="header">income</h2>
         <div class="form-row">
           <div class="col">
-            <select class="form-control" id="income-category">
+            <select class="form-control form-control-lg" id="income-category">
               <!-- User chooses a category (Entered dummy data. Change as needed)-->
               <option class="choose">Category...</option>
               <option>Primary Job</option>
@@ -196,24 +203,30 @@
             </select>
           </div>
         </div>
+        <br />
+        <div class="form-row">
+          <!-- User enters the date -->
+          <div class="col">
+            <input type="date" class="form-control form-control-lg" id="income-date">
+          </div>
+        </div>
+        <br />
         <div class="form-row">
           <!-- User enters the amount -->
           <div class="input-group col">
-            <span class="input-group-addon">$&nbsp;</span>
+            <span class="input-group-text" id="inputGroup-sizing-default">$</span>
             <input type="number" value="0.00" min="0" step="0.01" data-number-to-fixed="2" data-number-stepfactor="100"
-              class="form-control currency" id="income-amount" />
+              class="form-control form-control-lg currency" id="income-amount" />
           </div>
-          <!-- User enters the date -->
-          <div class="col">
-            <input type="date" class="form-control" id="income-date">
-          </div>
+
           <!-- Submit button should submit all four values to the database -->
-
         </div>
-
         <div class="right">
-          <button class="btn btn-primary" id="new-income-submit" type="submit">Submit</button>
+          <button class="btn btn-primary" id="new-income-submit" type="submit">SUBMIT</button>
         </div>
+
+
+
 
       </form>
 
@@ -221,13 +234,10 @@
     </div>
     <div class="col-md-8">
 
-      <!--##########################################################-->
-      <!-- Username Display -->
-      <!--##########################################################-->
 
-      {{!-- <h2>{{username}}</h2> --}}
-      <h2 id="username-display"></h2>
-      <h4 id="user-logout">log out</h4>
+
+
+
 
       <!--#############################################################-->
       <!-- Table of categories and total amounts spent -->
@@ -246,11 +256,11 @@
   {{/each}}
 </ul>
 -->
-      <table class="table table-borderless">
+      <table class="table">
         <thead>
           <tr>
-            <th scope="col" id="category-column">STUFF</th>
-            <th scope="col" id="expense-column">MONEY</th>
+            <th scope="col" id="category-column">stuff</th>
+            <th scope="col" id="expense-column">money</th>
           </tr>
         </thead>
         <tbody>
@@ -259,13 +269,13 @@
           <tr>
             <td class="category-td">{{this.name}}</td>
 
-            <td class="expense-td">{{this.total}}</td>
+            <td class="expense-td">${{this.total}}</td>
           </tr>
           {{/each}}
           <!-- This row will have the total expenses of all the categories -->
           <tr class="total-expense-row">
-            <td id="total-category">TOTAL</td>
-            {{!-- <td id="total-expense">{{ total-expense }}</td> --}}
+            <td id="total-category">total</td>
+            <td id="total-expense">${{ total-expense }}</td>
           </tr>
         </tbody>
       </table>
@@ -276,23 +286,23 @@
       <table class="table table-borderless" id="math-table">
         <thead>
           <tr>
-            <th colspan="2" id="math">MATH IT UP!</th>
+            <th colspan="2" id="math">math it up!</th>
           </tr>
         </thead>
         <tbody>
           <!-- Income value -->
           <tr>
-            <td class="category-td">INCOME</td>
+            <td class="category-td">income</td>
             <td class="expense-td">${{ incomeTotal }}</td>
           </tr>
           <!-- Using total of all categories' expenses. -->
           <tr>
-            <td class="category-td">EXPENSES</td>
+            <td class="category-td">expense</td>
             <td class="expense-td">${{ expenseTotal }}</td>
           </tr>
           <!-- The difference between income and expenses -->
           <tr class="total-savings-row">
-            <td id="total-savings-category">YO-DOUGH</td>
+            <td id="total-savings-category">yo-dough</td>
             <td id="total-savings">${{ difference }}</td>
           </tr>
         </tbody>
