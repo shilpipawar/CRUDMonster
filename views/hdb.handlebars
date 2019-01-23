@@ -236,10 +236,10 @@
           </tr>
         </thead>
         <tbody>
-          {{#each categoryList}}
+          {{#each expense}}
           <tr>
-            <td class="category-td">{{name}}</td>
-            <td class="expense-td">{{total}}</td>
+            <td class="category-td">{{this.name}}</td>
+            <td class="expense-td">{{this.total}}</td>
           </tr>
           {{/each}}
 
