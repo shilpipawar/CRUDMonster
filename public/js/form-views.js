@@ -9,7 +9,6 @@ $(document).ready(function() {
     $("#signup-form").removeClass("hide");
   });
 
-  function getExpense() {
     $.ajax({
       type: "GET",
       URL: "/category",
@@ -40,8 +39,7 @@ $(document).ready(function() {
       $("#amount").val("");
       $("#date").val("");
     });
-  }
-  getExpense();
+
   function validateRegistration() {
     //var illChars = /\W/;
     var name = $("#name-input")
