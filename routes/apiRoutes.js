@@ -38,32 +38,39 @@ module.exports = function(app) {
   });
 
   app.post("/api/expense", function(req, res) {
-    var req = req.body;
-    console.log(req);
+    var amount = req.body.amount;
+    var usersID = 2;
+    var categoryID = req.body.category;
+    var notes = req.body.notes;
+    var date = req.body.date;
+    console.log(categoryID);
     budget.expense.create(
-      ["amount", "users_id", "category_id", "notes", "date"],
-      [req.amount, req.users_id, req.category_id, req.notes, req.date],
+      ["amount", "users_id", "category_name", "notes", "date"],
+      [amount, usersID, categoryID, notes, date],
       function(result) {
-        console.log("API routes and " + result);
+        console.log(result);
         res.json(result);
       }
     );
   });
   app.get("/", function(req, res) {
-    var sqlQuery =
-      "SELECT  distinct(C.name), SUM(E.amount) AS total from expense E inner join category C on E.category_id = C.id inner join users U on E.users_id = U.id where U.userName = 'johnD' group by C.name";
+    var sqlQuery = "SELECT  distinct(C.name), SUM(E.amount) AS total from expense E inner join category C on E.category_name = C.name inner join users U on E.users_id = U.id where U.userName = 'johnD' group by C.name";
     connection.query(sqlQuery, function(error, results, fields) {
-      if (error) {
-        throw error;
-      }
-      console.log("newRoutes!!!!!!!!!!!");
+      if (error) throw error;
+      console.log("newRoutes!!!!!!!!!!!")
       console.log(results);
 
-      res.render("hdb", { expense: results });
-    });
-  });
+      res.render("hdb", { expense: results })
+    })
+  })
   /* --------------end expense-----------------*/
 
+      //Category Data Pull
+      app.get("/category", function(req, res) {
+        budget.category.all(function(result) {
+          res.render("hdb", { category: result });
+        })
+      });
   /* --------------users-------------------*/
   app.get("/api/users/all", function(req, res) {
     var req = req.body;
@@ -145,21 +152,18 @@ module.exports = function(app) {
       [userName, password],
       function(result) {
         console.log("API routes and " + result);
-        res.json(result);
+        location.reload();
       }
     );
   });
 
-  // Showing all categories
-
-  app.get("/", function(req, res) {
-    //console.log(res, req);
-    budget.category.all(function(category) {
-      console.log("123ABC");
-      console.log(category);
-      res.render("hdb", { category: category });
+    //Category Data Pull
+    app.get("/category", function(req, res) {
+      budget.category.all(function(result) {
+        res.render("hdb", { category: result });
+      })
     });
-  });
   //////////////////////////////////////////////////////////////////////////////////////////////////////////
 };
+
 /***************************************************************************************************** */

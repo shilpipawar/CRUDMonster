@@ -32,14 +32,14 @@ insert into income (amount ,users_id ,category_id ,notes ,date)
 
 -- expense
 -- use budget_db;
-insert into expense (amount ,users_id ,category_id ,notes ,date)
-				values (30, 2, 2,'grocery','2018-12-31');
-insert into expense (amount ,users_id ,category_id ,notes ,date)
-				values (30, 2, 2,'grocery','2019-01-03');
-insert into expense (amount ,users_id ,category_id ,notes ,date)
-				values (40, 2, 4,'uptown','2019-01-12');
-insert into expense (amount ,users_id ,category_id ,notes ,date)
-				values (10, 1, 5,'test','2019-01-18');
+insert into expense (amount ,users_id ,category_name ,notes ,date)
+				values (30, 2, "Food",'grocery','2018-12-31');
+insert into expense (amount ,users_id ,category_name ,notes ,date)
+				values (30, 2, "Food",'grocery','2019-01-03');
+insert into expense (amount ,users_id ,category_name ,notes ,date)
+				values (40, 2, "Resturants",'uptown','2019-01-12');
+insert into expense (amount ,users_id ,category_name ,notes ,date)
+				values (10, 1, "MISC",'test','2019-01-18');
                 
                 
                 

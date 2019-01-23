@@ -98,7 +98,7 @@ var orm = {
 
   expenseByCategory: function(condition, cb) {
     var queryString = "SELECT  distinct(C.name), SUM(E.amount) AS total from expense E";
-    queryString += " inner join category C on E.category_id = C.id";
+    queryString += " inner join category C on E.category_name = C.name";
     queryString += " inner join users U on E.users_id = U.id where U.userName = '";
     queryString += condition;
     queryString += "' group by C.name";

@@ -36,9 +36,9 @@ create table expense (
 	id int  auto_increment primary key  not null,
 	amount int not null,
     users_id int not null,
-    category_id int not null,
+    category_name varchar(100) not null,
 	notes text,
-    date datetime not null,
-    FOREIGN KEY (users_id) REFERENCES users(id),
-    FOREIGN KEY (category_id) REFERENCES category(id)
+    date datetime not null
+   -- FOREIGN KEY (users_id) REFERENCES users(id),
+   -- FOREIGN KEY (category_id) REFERENCES category(id)
 );
