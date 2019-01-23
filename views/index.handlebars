@@ -1,0 +1,295 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+  crossorigin="anonymous"></script>
+<script src="./js/form-views.js"></script>
+<div class="container">
+  <!-- ###### HEADER WITH TITLE ######-->
+  <div class="row">
+    <div class="col-md-12 title">
+      <h1 id="header-title">INDEX.HANDLEBARS</h1>
+    </div>
+  </div>
+
+  <div class="row row1">
+
+    <!--##########################################################-->
+    <!-- Login and Sign up Links -->
+    <!--##########################################################-->
+
+    <div class="col-md-4 left-side">
+      <h3 class="link"><span id="login">login</span> &nbsp;<span id="signup">sign up</span></h3>
+      <!--##########################################################-->
+            <!-- Sign up form action="/register-username" method="post" onsubmit="return validateRegistration()"-->
+      <!--##########################################################-->
+       <form id="signup-form" class="hide">
+        <div class="form-group">
+          <label for="name-input"><b>Username</b></label>
+
+          <input class="form-control" id="name-input" type="text" pattern="[a-zA-Z0-9]+" placeholder="Create a username"
+            name="name" required minlength="4" maxlength="12" size="15">
+        </div>
+        <div class="form-group">
+          <label for="upsw-input"><b>Password</b> (must use letters and numbers)</label>
+
+          <input class="form-control" id="upsw-input" type="password" pattern="[A-Za-z0-9_]{1,15}" placeholder="Enter Password"
+            name="psw" required minlength="8" maxlength="12" size="15">
+        </div>
+        <div class="form-group">
+          <label for="confpsw-input"><b>Confirm Password</b></label>
+          <input class="form-control" id="confpsw-input" type="password" pattern="[A-Za-z0-9_]{1,15}" placeholder="Confirm Password"
+            name="psw" required minlength="8" maxlength="12" size="15">
+        </div>
+        <div class="form-group">
+          <button class="btn btn-primary" id="signUp" type="submit">Sign Up</button>
+
+          <button type="button" onclick="document.getElementById('id02').style.display='none'" class="btn btn-danger cancelbtn">Cancel</button>
+        </div>
+        <div class="form-group">
+          <input class="remember-me" type="checkbox" name="remember">
+          <label class="form-check-label" for="exampleCheck1">Remember me</label>
+          <label for="message" id="lblmessage"></label>
+        </div>
+        <div class="form-group">
+          <span class="psw"><a class="psw" href="#">Forgot password?</a></span>
+        </div> 
+        <label class="psw" id="message"></label>
+      </form>
+ 
+      <!--##########################################################-->
+      <!-- Login form  action="/login-username" method="post"-->
+      <!--##########################################################-->
+      <form id="login-form">
+        <div class="form-group">
+          <label for="uname-input"><b>Username</b></label>
+          <input class="form-control" id="uname-input" type="text" pattern="[a-zA-Z0-9]+" placeholder="Enter Username" name="uname" required
+            maxlength="12" size="15">
+        </div>
+        <div class="form-group">
+          <label for="psw-input"><b>Password</b></label>
+          <input class="form-control" id="psw-input" type="password" pattern="[A-Za-z0-9_]{1,15}" placeholder="Enter Password" name="upsw" required
+            minlength="8" maxlength="12" size="15">
+        </div>
+        <div class="form-group">
+           <button class="btn btn-primary" id="signIn" type="submit">Login</button>
+          <button class="btn btn-danger cancelbtn" type="button" onclick="document.getElementById('id01').style.display='none'"
+            class="cancelbtn">Cancel</button>
+        </div>
+        <div class="form-group">
+          <input class="remember-me" type="checkbox" name="remember">
+          <label class="form-check-label" for="message" id="lblmessage1">Remember Me</label>
+        </div>
+        <div class="form-group">
+          <span class="psw"><a class="psw" href="#">Forgot password?</a></span>
+        </div>
+        <label class="psw" id="message"></label>
+      </form>
+      <br />
+
+      <!--##########################################################-->
+      <!-- Month Selection -->
+      <!--##########################################################-->
+      <div class="btn-group">
+        <button class="btn btn-secondary btn-lg dropdown-toggle" id="month-dropdown" type="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          MONTH
+        </button>
+        <div class="dropdown-menu">
+          <option>January 2019</option>
+          <option>December 2018</option>
+          <option>November 2017</option>
+        </div>
+      </div>
+      <br />
+
+      <!--##########################################################-->
+      <!-- Income Form -->
+      <!--##########################################################-->
+      <form id="new-income-form">
+        <h2 class="header">income</h2>
+        <div class="form-row">
+          <div class="col">
+            <select class="form-control" id="income-category">
+              <!-- User chooses a category (Entered dummy data. Change as needed)-->
+              <option class="choose">Category...</option>
+              <option>Primary Job</option>
+              <option>Uber</option>
+              <option>Secondary Job</option>
+              <option>Ebay</option>
+              <option>Gift</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <!-- User enters the amount -->
+          <div class="input-group col">
+            <span class="input-group-addon">$&nbsp;</span>
+            <input type="number" value="0.00" min="0" step="0.01" data-number-to-fixed="2" data-number-stepfactor="100"
+              class="form-control currency" id="income-amount" />
+          </div>
+          <!-- User enters the date -->
+          <div class="col">
+            <input type="date" class="form-control" id="income-date">
+          </div>
+          <!-- Submit button should submit all four values to the database -->
+
+        </div>
+
+        <div class="right">
+          <button class="btn btn-primary" id="new-income-submit" type="submit">Submit</button>
+        </div>
+
+      </form>
+
+
+    </div>
+    <div class="col-md-8">
+
+      <!--##########################################################-->
+      <!-- Username Display -->
+      <!--##########################################################-->
+      <div>
+        <h4 class="username"><span id="username-display">UserName</span> &nbsp;<span id="user-logout">log out</span></h4>
+      </div>
+
+
+      <!--##########################################################-->
+      <!-- Input new expense form -->
+      <!--##########################################################-->
+      <br />
+      <br />
+      <form id="new-expense-form">
+        <h2 class="header">new purchase</h2>
+        <div class="form-row">
+          <div class="col">
+            <select class="form-control" id="category">
+              <!-- User chooses a category (Entered dummy data. Change as needed)-->
+              <option class="choose">Category...</option>
+              <option>Rent</option>
+              <option>Mortgage</option>
+              <option>Food</option>
+              <option>Gas</option>
+              <option>Entertainment</option>
+              <option>Clothing</option>
+              <option>TV</option>
+              <option>Phone</option>
+              <option>Internet</option>
+              <option>Medical</option>
+              <option>Car Payment</option>
+            </select>
+          </div>
+          <!-- User enters the description -->
+          <div class="col">
+            <input type="text" class="form-control" id="description" placeholder="What you get?">
+          </div>
+          <br />
+
+          <!-- User enters the amount -->
+          <div class="input-group col">
+            <span class="input-group-addon">$&nbsp;</span>
+            <input type="number" value="0.00" min="0" step="0.01" data-number-to-fixed="2" data-number-stepfactor="100"
+              class="form-control currency" id="amount" />
+          </div>
+          <!-- User enters the date -->
+          <div class="col">
+            <input type="date" class="form-control" id="date">
+          </div>
+          <!-- Submit button should submit all four values to the database -->
+        </div>
+
+        <div class="right">
+          <button class="btn btn-primary" id="new-expense-submit" type="submit">Submit</button>
+        </div>
+      </form>
+
+      <!--#############################################################-->
+      <!-- Table of categories and total amounts spent -->
+      <!--#############################################################-->
+
+      <!-- The following is dummy data. Any of it can be changed. -->
+      <table class="table table-borderless">
+        <thead>
+          <tr>
+            <th scope="col" id="category-column">STUFF</th>
+            <th scope="col" id="expense-column">MONEY</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="category-td">RENT</td>
+            <td class="expense-td">$955.00</td>
+          </tr>
+          <tr>
+            <td class="category-td">FOOD</td>
+            <td class="expense-td">$320.00</td>
+          </tr>
+          <tr>
+            <td class="category-td">GAS</td>
+            <td class="expense-td">$155.00</td>
+          </tr>
+          <tr>
+            <td class="category-td">ENTERTAINMENT</td>
+            <td class="expense-td">$180.00</td>
+          </tr>
+          <tr>
+            <td class="category-td">CLOTHING</td>
+            <td class="expense-td">$85.00</td>
+          </tr>
+          <tr>
+            <td class="category-td">TV</td>
+            <td class="expense-td">$10.00</td>
+          </tr>
+          <tr>
+            <td class="category-td">INTERNET</td>
+            <td class="expense-td">$120.00</td>
+          </tr>
+          <tr>
+            <td class="category-td">MEDICAL</td>
+            <td class="expense-td">$50.00</td>
+          </tr>
+          <tr>
+            <td class="category-td">CAR</td>
+            <td class="expense-td">$60.00</td>
+          </tr>
+          <tr>
+            <td class="category-td">CELL PHONE</td>
+            <td class="expense-td">$160.00</td>
+          </tr>
+          <!-- This row will have the total expenses of all the categories -->
+          <tr class="total-expense-row">
+            <td id="total-category">TOTAL</td>
+            <td id="total-expense">$2155.00</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!--#############################################################-->
+      <!-- Table of total spent, total earned and difference -->
+      <!--#############################################################-->
+      <table class="table table-borderless" id="math-table">
+        <thead>
+          <tr>
+            <th colspan="2" id="math">MATH IT UP!</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Income value -->
+          <tr>
+            <td class="category-td">INCOME</td>
+            <td class="expense-td">$4250.00</td>
+          </tr>
+          <!-- Using total of all categories' expenses. -->
+          <tr>
+            <td class="category-td">EXPENSES</td>
+            <td class="expense-td">$2155.00</td>
+          </tr>
+          <!-- The difference between income and expenses -->
+          <tr class="total-savings-row">
+            <td id="total-savings-category">YO-DOUGH</td>
+            <td id="total-savings">$2095.00</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+{{!-- INBUILD SRIPT --}}
