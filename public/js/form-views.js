@@ -9,6 +9,19 @@ $(document).ready(function() {
     $("#signup-form").removeClass("hide");
   });
 
+  $.ajax({
+    method: "GET",
+    url: "/api/income/all",
+  }).then(function(res) {
+   console.log("logging income data...");
+   console.log(res);
+   for (i = 0; i < res.length; i ++) {
+    console.log(res[i].total);
+    totalsum = totalsum += res[i].total;
+    }
+    $("")
+  });
+
   $("#new-expense-submit").on("click", function(event) {
     event.preventDefault();
     var newExpense = {
@@ -112,7 +125,8 @@ $(document).ready(function() {
           url: "/api/user-expenses",
           data: input
         }).then(function(res) {
-          // console.log("result " + res)
+           console.log("logging expense data...");
+           
         });
         // console.log("success");
       });

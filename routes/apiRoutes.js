@@ -9,7 +9,9 @@ module.exports = function(app) {
   app.get("/api/income/all", function(req, res) {
     var req = req.body;
     budget.income.all(function(result) {
-      console.log("Api routes " + result);
+      console.log(result);
+      var income = result[0].amount;
+      console.log(income)
       res.json(result);
     });
   });
@@ -59,9 +61,14 @@ module.exports = function(app) {
       if (error) throw error;
       console.log("newRoutes!!!!!!!!!!!")
       console.log(results);
-
-      res.render("hdb", { expense: results })
-    })
+      var totalsum = 0;
+      for (i = 0; i < results.length; i ++) {
+      console.log(results[i].total);
+      totalsum = totalsum += results[i].total;
+      }
+      console.log(totalsum)
+      res.render("hdb", { expense: results, totalsum })
+    });
   })
   /* --------------end expense-----------------*/
 
