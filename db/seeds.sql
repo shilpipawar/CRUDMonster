@@ -8,15 +8,16 @@ insert into  users (userName ,
     
 insert into  users (userName , 
     password 
-    ) VALUES ('johnD','whatever');
+    ) VALUES ('johnny-D','whatever');
     
     
 -- Categories
 -- use budget_db;
-Insert into category (name,isExpense) VALUES ('Paycheck', 0) ;
+Insert into category (name,isExpense) VALUES ('Rent', 1) ;
 Insert into category (name,isExpense) VALUES ('Food', 1);
 Insert into category (name,isExpense) VALUES ('Clothing', 1);
-Insert into category (name,isExpense) VALUES ('Resturants', 1);
+Insert into category (name,isExpense) VALUES ('Restaurants', 1);
+Insert into category (name,isExpense) VALUES ('Insurance', 1);
 Insert into category (name,isExpense) VALUES ('MISC', 1);
 
 
@@ -37,7 +38,7 @@ insert into expense (amount ,users_id ,category_name ,notes ,date)
 insert into expense (amount ,users_id ,category_name ,notes ,date)
 				values (30, 2, "Food",'grocery','2019-01-03');
 insert into expense (amount ,users_id ,category_name ,notes ,date)
-				values (40, 2, "Resturants",'uptown','2019-01-12');
+				values (40, 2, "Restaurants",'uptown','2019-01-12');
 insert into expense (amount ,users_id ,category_name ,notes ,date)
 				values (10, 1, "MISC",'test','2019-01-18');
                 
