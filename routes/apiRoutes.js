@@ -55,18 +55,24 @@ module.exports = function(app) {
       }
     );
   });
-/*  app.get("/", function(req, res) {
-    var sqlQuery = "SELECT  distinct(C.name), SUM(E.amount) AS total from expense E inner join category C on E.category_id = C.id inner join users U on E.users_id = U.id where U.userName = 'johnD' group by C.name";
+  app.get(["/"], function(req, res) {
+    var sqlQuery = "SELECT  distinct(C.name), SUM(E.amount) AS total from expense E inner join category C on E.category_name = C.name inner join users U on E.users_id = U.id where U.userName = 'johnD' group by C.name";
     connection.query(sqlQuery, function(error, results, fields) {
-        if(error) throw error;
-        console.log("newRoutes!!!!!!!!!!!")
-        console.log(results);
+      if (error) throw error;
+      console.log("newRoutes!!!!!!!!!!!")
+      console.log(results);
 
-        res.render("hdb", {expense: results})
+      res.render("hdb", { expense: results })
     })
-})
+  })
   /* --------------end expense-----------------*/
 
+      //Category Data Pull
+      app.get("/category", function(req, res) {
+        budget.category.all(function(result) {
+          res.render("hdb", { category: result });
+        })
+      });
   /* --------------users-------------------*/
   app.get("/api/users/all", function(req, res) {
     var req = req.body;
@@ -98,7 +104,7 @@ module.exports = function(app) {
       condition, function(expense) {
         // console.log("name " + name)
         //console.log("callback: " + JSON.stringify(result));
-        res.render("hdb", {expense: expense});
+        res.render("hdb", { expense: expense });
         // res.render("hdb", {categoryList: sum});
       }
     );
@@ -130,23 +136,22 @@ module.exports = function(app) {
       ["userName"],
       [userName],
       function(result) {
-      console.log("Line 99: " + result[0].password);
-      if(password === result[0].password)
-      {
-        //res.render(path.join(__dirname, "../views/hdb.handlebars"));//username
-        budget.category.all(function(category) {
-          console.log(category)
-          // res.render("hdb", {category:category});
-          res.render("hdb", {username:result[0].userName});
-        });
-       // res.render("hdb", {username:result[0].userName});
-        // res.json(result[0].userName);
+        console.log("Line 99: " + result[0].password);
+        if (password === result[0].password) {
+          //res.render(path.join(__dirname, "../views/hdb.handlebars"));//username
+          budget.category.all(function(category) {
+            console.log(category)
+            // res.render("hdb", {category:category});
+            res.render("hdb", { username: result[0].userName });
+          });
+          // res.render("hdb", {username:result[0].userName});
+          // res.json(result[0].userName);
 
-      }else{
-        console.log("ERROR");
-      }
-      //res.json(result[0].password);
-    })
+        } else {
+          console.log("ERROR");
+        }
+        //res.json(result[0].password);
+      })
   });
   //Register Controler Code
   app.post("/register-username", function(req, res) {
@@ -163,14 +168,12 @@ module.exports = function(app) {
       });
   });
 
-  // Showing all categories
-  //Category Data Pull
-  app.get("/", function(req, res) {
-    //console.log("category body: " + req.body)
-    budget.category.all(function(result) {
-       res.render("hdb", { category:result });  
-    })
-  });
+    //Category Data Pull
+    app.get("/category", function(req, res) {
+      budget.category.all(function(result) {
+        res.render("hdb", { category: result });
+      })
+    });
   //////////////////////////////////////////////////////////////////////////////////////////////////////////
 };
 

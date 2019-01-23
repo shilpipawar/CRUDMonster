@@ -1,33 +1,22 @@
-$(document).ready(function () {
+$(document).ready(function() {
   // Showing and hiding login form
-  $("#login").on("click", function () {
+  $("#login").on("click", function() {
     $("#signup-form").addClass("hide");
     $("#login-form").removeClass("hide");
   });
-  $("#signup").on("click", function () {
+  $("#signup").on("click", function() {
     $("#login-form").addClass("hide");
     $("#signup-form").removeClass("hide");
   });
-  
-  $.ajax({
-    type: "GET",
-    URL: "/",
-  }).then(function() {
 
-    // Grab values from new expense form
-    //$("#new-expense-submit").on("click", function () {
-    // event.preventDefault();
-      // var category = $("#category").val();
-      // var description = $("#description").val().trim();
-      // var amount = $("#amount").val().trim();
-      // var date = $("#date").val().trim();
+  function getExpense() {
+    $.ajax({
+      type: "GET",
+      URL: "/category",
+      async: true
+    }).then(function() {
 
-      // console.log(category);
-      // console.log(description);
-      // console.log(date);
-      // console.log(amount);
-
-      $("#new-expense-submit").on("click", function (event) {
+      $("#new-expense-submit").on("click", function(event) {
         event.preventDefault();
         var newExpense = {
           category: $("#category").val(),
@@ -37,20 +26,22 @@ $(document).ready(function () {
         };
 
         $.ajax("/api/expense", {
-            type: "POST",
-            data: newExpense
+          type: "POST",
+          data: newExpense
         }).then(function(result) {
           console.log(result);
           location.reload();
         }
-          
+
         );
+      });
+      $("#category").val("Category...");
+      $("#description").val("");
+      $("#amount").val("");
+      $("#date").val("");
     });
-    $("#category").val("Category...");
-    $("#description").val("");
-    $("#amount").val("");
-    $("#date").val("");
-  });
+  }
+  getExpense();
   function validateRegistration() {
     //var illChars = /\W/;
     var name = $("#name-input")
@@ -82,7 +73,7 @@ $(document).ready(function () {
           method: "POST",
           url: "/register-username",
           data: input
-        }).then(function () {
+        }).then(function() {
           // console.log("success");
         });
       } else {
@@ -101,35 +92,35 @@ $(document).ready(function () {
     var password = $("#upsw-input")
       .val()
       .trim();
-      if(username === ""){
-        $("#message").html("Please enter a username");
-      }else{
-        // console.log("inside :" + password + username);
+    if (username === "") {
+      $("#message").html("Please enter a username");
+    } else {
+      // console.log("inside :" + password + username);
+      var input = {
+        name: username,
+        password: SHA512(password)
+      };
+      // console.log(input);
+      $.ajax({
+        method: "POST",
+        url: "/login-username",
+        data: input
+      }).then(function(result) {
         var input = {
-          name: username,
-          password: SHA512(password)
-        };
-        // console.log(input);
+          name: username
+        }
         $.ajax({
           method: "POST",
-          url: "/login-username",
+          url: "/api/user-expenses",
           data: input
-        }).then(function (result) {
-          var input = {
-            name: username
-          }
-          $.ajax({
-            method: "POST",
-            url: "/api/user-expenses",
-            data: input
-          }).then(function (res){
-            // console.log("result " + res)
-          });
-          // console.log("success");
-          $("#username-display").html(result);
-
+        }).then(function(res) {
+          // console.log("result " + res)
         });
-      }
+        // console.log("success");
+        $("#username-display").html(result);
+
+      });
+    }
   }
   function doLogOut() {
     // console.log("Singoff..");
@@ -141,7 +132,7 @@ $(document).ready(function () {
       method: "GET",
       url: "/",
       data: singInflag
-    }).then(function () {
+    }).then(function() {
       // console.log("success");
     });
   }
