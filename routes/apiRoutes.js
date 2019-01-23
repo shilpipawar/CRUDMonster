@@ -121,18 +121,17 @@ module.exports = function(app) {
     budget.users.selectPassword(["userName"], [userName], function(result) {
       console.log("Line 99: " + result[0].password);
       if (password === result[0].password) {
-        //res.render(path.join(__dirname, "../views/hdb.handlebars"));//username
         budget.category.all(function(category) {
-          console.log(category);
-          // res.render("hdb", {category:category});
-          res.render("hdb", { username: result[0].userName });
+          var test = JSON.stringify(category);
+          console.log(test);
+          var testjson = JSON.parse(test);
+          console.log(testjson);
+          res.render("hdb", { category: testjson });
         });
-        // res.render("hdb", {username:result[0].userName});
-        // res.json(result[0].userName);
+        //res.render("hdb", { username: result[0].userName });
       } else {
         console.log("ERROR");
       }
-      //res.json(result[0].password);
     });
   });
   //Register Controler Code

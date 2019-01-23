@@ -116,6 +116,7 @@ $(document).ready(function() {
         url: "/login-username",
         data: input
       }).then(function(result) {
+        $("#username-display").html(username);
         var input = {
           name: username
         };
@@ -127,7 +128,6 @@ $(document).ready(function() {
           // console.log("result " + res)
         });
         // console.log("success");
-        $("#username-display").html(result);
       });
     }
   }
