@@ -9,20 +9,7 @@ $(document).ready(function() {
     $("#signup-form").removeClass("hide");
   });
 
-  // Grab values from new expense form
-  $("#new-expense-submit").on("click", function() {
-    event.preventDefault();
-    // var category = $("#category").val();
-    // var description = $("#description").val().trim();
-    // var amount = $("#amount").val().trim();
-    // var date = $("#date").val().trim();
-
-    // console.log(category);
-    // console.log(description);
-    // console.log(date);
-    // console.log(amount);
-  });
-  $("#new-expense-form").on("submit", function(event) {
+  $("#new-expense-submit").on("click", function(event) {
     event.preventDefault();
     var newExpense = {
       category: $("#category").val(),

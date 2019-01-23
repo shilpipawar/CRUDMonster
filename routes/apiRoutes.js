@@ -152,7 +152,7 @@ module.exports = function(app) {
       [userName, password],
       function(result) {
         console.log("API routes and " + result);
-        res.json(result);
+        location.reload();
       }
     );
   });
