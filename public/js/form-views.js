@@ -1,16 +1,16 @@
-$(document).ready(function () {
+$(document).ready(function() {
   // Showing and hiding login form
-  $("#login").on("click", function () {
+  $("#login").on("click", function() {
     $("#signup-form").addClass("hide");
     $("#login-form").removeClass("hide");
   });
-  $("#signup").on("click", function () {
+  $("#signup").on("click", function() {
     $("#login-form").addClass("hide");
     $("#signup-form").removeClass("hide");
   });
 
   // Grab values from new expense form
-  $("#new-expense-submit").on("click", function () {
+  $("#new-expense-submit").on("click", function() {
     event.preventDefault();
     // var category = $("#category").val();
     // var description = $("#description").val().trim();
@@ -21,25 +21,28 @@ $(document).ready(function () {
     // console.log(description);
     // console.log(date);
     // console.log(amount);
-
-    $("#new-expense-form").on("submit", function (event) {
-      event.preventDefault();
-      var newExpense = {
-        category: $("#category").val(),
-        description: $("#description").val().trim(),
-        amount: $("#amount").val().trim(),
-        date: $("#date").val().trim()
-      };
-
-      $.ajax("/api/expense", {
-          type: "POST",
-          data: newExpense
-      }).then(
-          function () {
-              location.reload();
-          }
-      );
   });
+  $("#new-expense-form").on("submit", function(event) {
+    event.preventDefault();
+    var newExpense = {
+      category: $("#category").val(),
+      description: $("#description")
+        .val()
+        .trim(),
+      amount: $("#amount")
+        .val()
+        .trim(),
+      date: $("#date")
+        .val()
+        .trim()
+    };
+
+    $.ajax("/api/expense", {
+      type: "POST",
+      data: newExpense
+    }).then(function() {
+      location.reload();
+    });
     $("#category").val("Category...");
     $("#description").val("");
     $("#amount").val("");
@@ -47,6 +50,7 @@ $(document).ready(function () {
   });
   function validateRegistration() {
     //var illChars = /\W/;
+    console.log("Sign Up--");
     var name = $("#name-input")
       .val()
       .trim();
@@ -56,16 +60,18 @@ $(document).ready(function () {
     var confirmPassword = $("#confpsw-input")
       .val()
       .trim();
-
+    console.log(passwordField + " " + confirmPassword);
     if (name === "") {
       $("#message").html("Please enter a username");
     } else if (name.length < 5 || name.length > 15) {
-      $("#message").html("Your username is the wrong length (5-15 characters allowed).");
+      $("#message").html(
+        "Your username is the wrong length (5-15 characters allowed)."
+      );
     } else {
       //if user name success
       if (passwordField === confirmPassword) {
         var password = SHA512(passwordField);
-        // console.log(password);
+        console.log(password);
         //password success
         var input = {
           name: name,
@@ -76,7 +82,7 @@ $(document).ready(function () {
           method: "POST",
           url: "/register-username",
           data: input
-        }).then(function () {
+        }).then(function() {
           // console.log("success");
         });
       } else {
@@ -88,42 +94,42 @@ $(document).ready(function () {
     return true;
   }
   function doSignIn() {
-    // console.log("Singin..");
+    console.log("Singin..");
     var username = $("#uname-input")
       .val()
       .trim();
     var password = $("#upsw-input")
       .val()
       .trim();
-      if(username === ""){
-        $("#message").html("Please enter a username");
-      }else{
-        // console.log("inside :" + password + username);
+      console.log("username + " + username + password);
+    if (username === "") {
+      $("#message").html("Please enter a username");
+    } else {
+      console.log("inside :" + password + username);
+      var input = {
+        name: username,
+        password: SHA512(password)
+      };
+      console.log("INPUT FROM UI" + input);
+      $.ajax({
+        method: "POST",
+        url: "/login-username",
+        data: input
+      }).then(function(result) {
         var input = {
-          name: username,
-          password: SHA512(password)
+          name: username
         };
-        // console.log(input);
         $.ajax({
           method: "POST",
-          url: "/login-username",
+          url: "/api/user-expenses",
           data: input
-        }).then(function (result) {
-          var input = {
-            name: username
-          }
-          $.ajax({
-            method: "POST",
-            url: "/api/user-expenses",
-            data: input
-          }).then(function (res){
-            // console.log("result " + res)
-          });
-          // console.log("success");
-          $("#username-display").html(result);
-
+        }).then(function(res) {
+          // console.log("result " + res)
         });
-      }
+        // console.log("success");
+        $("#username-display").html(result);
+      });
+    }
   }
   function doLogOut() {
     // console.log("Singoff..");
@@ -135,7 +141,7 @@ $(document).ready(function () {
       method: "GET",
       url: "/",
       data: singInflag
-    }).then(function () {
+    }).then(function() {
       // console.log("success");
     });
   }
@@ -147,34 +153,10 @@ $(document).ready(function () {
   //logout
   $(document).on("click", "#user-logout", doLogOut);
 
-  //Validation Code
-  function isValidateUserID(username) {
-    var format = /[ !#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/;
-
-    if (format.test(username)) {
-      // console.log("PASS");
-      return true;
-    } else {
-      // console.log("FAIL");
-      return false;
-    }
-  }
-  function isValidatePassword(password) {
-    //pattern="(?=.*\d)(?=.*[a-z]).{8,}"
-    var format = /[ !#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/;
-
-    if (format.test(password)) {
-      // console.log("PASS");
-      return true;
-    } else {
-      // console.log("FAIL");
-      return false;
-    }
-  }
   // PASSWORD PROTECTION SHA algo
   /*
-  * Secure Hash Algorithm (SHA512)
-  */
+   * Secure Hash Algorithm (SHA512)
+   */
 
   function SHA512(str) {
     function int64(msint_32, lsint_32) {
@@ -400,11 +382,11 @@ $(document).ready(function () {
     function maj(x, y, z) {
       return new int64(
         (x.highOrder & y.highOrder) ^
-        (x.highOrder & z.highOrder) ^
-        (y.highOrder & z.highOrder),
+          (x.highOrder & z.highOrder) ^
+          (y.highOrder & z.highOrder),
         (x.lowOrder & y.lowOrder) ^
-        (x.lowOrder & z.lowOrder) ^
-        (y.lowOrder & z.lowOrder)
+          (x.lowOrder & z.lowOrder) ^
+          (y.lowOrder & z.lowOrder)
       );
     }
 

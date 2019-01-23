@@ -70,12 +70,12 @@
       <form id="login-form" action="/login-username" method="post">
         <div class="form-group">
           <label for="uname-input"><b>Username</b></label>
-          <input class="form-control" id="uname-input" type="text" placeholder="Enter Username" name="uname" required
+          <input class="form-control" id="uname-input" type="text" pattern="[a-zA-Z0-9]+" placeholder="Enter Username" name="uname" required
             minlength="8" maxlength="12" size="15">
         </div>
         <div class="form-group">
           <label for="upsw-input"><b>Password</b></label>
-          <input class="form-control" id="upsw-input" type="password" placeholder="Enter Password" name="upsw" required
+          <input class="form-control" id="upsw-input" type="password" pattern="[A-Za-z0-9_]{1,15}" placeholder="Enter Password" name="upsw" required
             minlength="8" maxlength="12" size="15">
         </div>
         <div class="form-group">
