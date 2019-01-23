@@ -30,7 +30,6 @@ var orm = {
     connection.query(queryString, function(err, res) {
       if (err) {
         throw err;
-        
       }
       // console.log("orm.js " + queryString)
       cb(res);
