@@ -9,7 +9,8 @@ if (process.env.JAWSDB_URL) {
     port: 3306,
     user: "root",
     password: "Pass@1234",
-    database: "budget_db"
+    database: "budget_db",
+    multipleStatements: true
   });
 }
 

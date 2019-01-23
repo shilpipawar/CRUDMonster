@@ -9,8 +9,10 @@ module.exports = function(app) {
   app.get("/api/income/all", function(req, res) {
     var req = req.body;
     budget.income.all(function(result) {
-      console.log("Api routes " + result);
-      res.json(result[0].amount);
+      console.log(result);
+      var income = result[0].amount;
+      console.log(income)
+      res.render("hdb", { income })
     });
   });
 
