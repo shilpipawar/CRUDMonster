@@ -30,8 +30,9 @@ var orm = {
     connection.query(queryString, function(err, res) {
       if (err) {
         throw err;
+        
       }
-      console.log("orm.js " + queryString)
+      // console.log("orm.js " + queryString)
       cb(res);
     });
   },
@@ -39,7 +40,7 @@ var orm = {
   selectPassword: function(table, col, val, cb) {
     var queryString = 
     "SELECT password, userName FROM " + table + " WHERE " + col + " = '" + val + "';";
-    console.log(queryString);
+    // console.log(queryString);
 
     connection.query(queryString, function(err, result) {
       if (err) {
@@ -59,7 +60,7 @@ var orm = {
       printQuestionMarks(val.length) +
       ") ";
 
-    console.log(queryString);
+    // console.log(queryString);
 
     connection.query(queryString, val, function(err, res) {
       if (err) {
@@ -97,7 +98,7 @@ var orm = {
   },
 
   expenseByCategory: function(condition, cb) {
-    var queryString = "SELECT  distinct(C.name), SUM(E.amount) from expense E";
+    var queryString = "SELECT  distinct(C.name), SUM(E.amount) AS total from expense E";
     queryString += " inner join category C on E.category_id = C.id";
     queryString += " inner join users U on E.users_id = U.id where U.userName = '";
     queryString += condition;
@@ -124,6 +125,7 @@ var orm = {
       cb(result);
     });
   }
+  
 };
 
 module.exports = orm;

@@ -23,6 +23,7 @@ var budgets = {
 
     expenseByMonth: function(condition, cb) {
       orm.expenseByMonth(condition, function(res) {
+      
         cb(res);
       });
     }
@@ -57,7 +58,7 @@ var budgets = {
     },
 
     create: function(cols, vals, cb) {
-      console.log("im here");
+      // console.log("im here");
       orm.create("users", cols, vals, function(res) {
         cb(res);
       });

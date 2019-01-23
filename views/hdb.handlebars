@@ -12,7 +12,7 @@
   <!-- ###### HEADER WITH TITLE ######-->
   <div class="row">
     <div class="col-md-12 title">
-      <h1 id="header-title">WHERE MY DOUGH GO?</h1>
+      <h1 id="header-title">HDB.HANDLEBARS</h1>
     </div>
   </div>
 
@@ -75,7 +75,7 @@
         </div>
         <div class="form-group">
           <label for="upsw-input"><b>Password</b></label>
-          <input class="form-control" id="psw-input" type="password" placeholder="Enter Password" name="upsw" required
+          <input class="form-control" id="upsw-input" type="password" placeholder="Enter Password" name="upsw" required
             minlength="8" maxlength="12" size="15">
         </div>
         <div class="form-group">
@@ -117,7 +117,7 @@
       <!--##########################################################-->
       <!-- Income Form -->
       <!--##########################################################-->
-      <form id="new-expense-form">
+      <form id="new-income-form">
         <h2 class="header">income</h2>
         <div class="form-row">
           <div class="col">
@@ -166,6 +166,9 @@
       <!--##########################################################-->
       <!-- Input new expense form -->
       <!--##########################################################-->
+
+
+
       <form id="new-expense-form">
         <h2 class="header">new purchase</h2>
         <div class="form-row">
@@ -175,16 +178,8 @@
               {{#each category}}
               <option>{{this.name}}</option>
               {{/each}}
-              {{!-- <option>Mortgage</option>
-              <option>Food</option>
-              <option>Gas</option>
-              <option>Entertainment</option>
-              <option>Clothing</option>
-              <option>TV</option>
-              <option>Phone</option>
-              <option>Internet</option>
-              <option>Medical</option>
-              <option>Car Payment</option> --}}
+
+
             </select>
           </div>
           <!-- User enters the description -->
@@ -233,20 +228,23 @@
           <tr>
             <th scope="col" id="category-column">STUFF</th>
             <th scope="col" id="expense-column">MONEY</th>
-          </tr>
+          </tr> 
         </thead>
         <tbody>
-          {{#each category-list}}
+
+          
+          {{#each expense}}
           <tr>
-            <td class="category-td">{{category-name}}</td>
-            <td class="expense-td">{{sum}}</td>
+            <td class="category-td">{{this.name}}</td>
+            
+            <td class="expense-td">{{this.total}}</td>
           </tr>
           {{/each}}
 
           <!-- This row will have the total expenses of all the categories -->
           <tr class="total-expense-row">
             <td id="total-category">TOTAL</td>
-            <td id="total-expense">{{ total-expense }}</td>
+            {{!-- <td id="total-expense">{{ total-expense }}</td> --}}
           </tr>
         </tbody>
       </table>

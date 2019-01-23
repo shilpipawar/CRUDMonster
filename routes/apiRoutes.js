@@ -1,9 +1,11 @@
 var db = require("../models");
 var budget = require("../models/budget.js");
 var path = require("path");
-
+var connection = require("../config/connection")
 module.exports = function(app) {
   // Get all examples
+
+
 
   /* ------------income---------------*/
   app.get("/api/income/all", function(req, res) {
@@ -49,6 +51,16 @@ module.exports = function(app) {
       }
     );
   });
+  app.get("/", function(req, res) {
+    var sqlQuery = "SELECT  distinct(C.name), SUM(E.amount) AS total from expense E inner join category C on E.category_id = C.id inner join users U on E.users_id = U.id where U.userName = 'johnD' group by C.name";
+    connection.query(sqlQuery, function(error, results, fields) {
+        if(error) throw error;
+        console.log("newRoutes!!!!!!!!!!!")
+        console.log(results);
+
+        res.render("hdb", {expense: results})
+    })
+})
   /* --------------end expense-----------------*/
 
   /* --------------users-------------------*/
@@ -74,16 +86,34 @@ module.exports = function(app) {
   });
 
   app.post("/api/user-expenses", function(req, res) {
+    console.log("apiRoutes 79 + ")
     console.log(req.body.name);
     var condition = req.body.name;
     console.log("line 79: " + condition);
     budget.expense.expenseByCategory(
-      condition, function(result) {
-        console.log("callback: " + JSON.stringify(result));
-        res.json(result);
+      condition, function(expense) {
+        // console.log("name " + name)
+        //console.log("callback: " + JSON.stringify(result));
+        res.render("hdb", {expense: expense});
+        // res.render("hdb", {categoryList: sum});
       }
     );
   })
+
+  // app.get("/api/user-expenses", function(req, res) {
+  //   var condition = req.body.name;
+  //   budget.expense.expenseByCategory(condition, function(expense) {
+  //     console.log("expense stuffffff");
+  //     console.log(condition);
+  //     res.render("maintable", {expense: expense});
+
+  //   })
+
+  // })
+
+
+
+
   /*-------------end users----------------*/
   //Login Controler Code
   app.post("/login-username", function(req, res) {
@@ -102,11 +132,12 @@ module.exports = function(app) {
         //res.render(path.join(__dirname, "../views/hdb.handlebars"));//username
         budget.category.all(function(category) {
           console.log(category)
-          res.render("hdb", {category:category}); 
-          return res.json(result[0].userName);
+          // res.render("hdb", {category:category});
+          res.render("hdb", {username:result[0].userName});
         });
        // res.render("hdb", {username:result[0].userName});
-        //res.json(result[0].userName);
+        // res.json(result[0].userName);
+
       }else{
         console.log("ERROR");
       }
@@ -127,6 +158,17 @@ module.exports = function(app) {
         res.json(result);
       });
   });
+
+  // Showing all categories
+
+  app.get("/", function(req, res) {
+    //console.log(res, req);
+    budget.category.all(function(category) {
+      console.log("123ABC")
+      console.log(category)
+      res.render("hdb", {category:category});
+    })
+  })
   //////////////////////////////////////////////////////////////////////////////////////////////////////////
 };
 /***************************************************************************************************** */
