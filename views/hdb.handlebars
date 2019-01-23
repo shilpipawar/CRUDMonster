@@ -1,8 +1,9 @@
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-{{!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+{{!--
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
   crossorigin="anonymous"></script> --}}
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
   crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
@@ -12,7 +13,65 @@
   <!-- ###### HEADER WITH TITLE ######-->
   <div class="row">
     <div class="col-md-12 title">
-      <h1 id="header-title">HDB.HANDLEBARS</h1>
+      <h1 id="header-title">WHERE MY DOUGH GO?</h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <!--##########################################################-->
+      <!-- Input new expense form -->
+      <!--##########################################################-->
+
+
+
+      <form id="new-expense-form">
+        <h2 class="header">new purchase</h2>
+
+        <div class="form-row">
+          <div class="col">
+            <select class="form-control form-control-lg" id="category">
+              <option class="choose">Category...</option>
+              <option>Rent</option>
+              <option>Mortgage</option>
+              <option>Food</option>
+              <option>Gas</option>
+              <option>Entertainment</option>
+              <option>Clothing</option>
+              <option>TV</option>
+              <option>Phone</option>
+              <option>Internet</option>
+              <option>Medical</option>
+              <option>Car Payment</option>
+              <option>Restaurants</option>
+              {{!-- {{#each category}}
+              <option>{{this.name}}</option>
+              {{/each}} --}}
+            </select>
+          </div>
+          <!-- User enters the description -->
+          <div class="col">
+            <input type="text" class="form-control form-control-lg" id="description" placeholder="What you get?">
+          </div>
+          <br />
+
+          <!-- User enters the amount -->
+          <div class="input-group col">
+            <span class="input-group-text" id="inputGroup-sizing-default">$</span>
+            <input type="number" value="0.00" min="0" step="0.01" data-number-to-fixed="2" data-number-stepfactor="100"
+              class="form-control form-control-lg currency" id="amount" />
+          </div>
+          <!-- User enters the date -->
+          <div class="col">
+            <input type="date" class="form-control form-control-lg" id="date">
+          </div>
+          <!-- Submit button should submit all four values to the database -->
+        </div>
+
+        <div class="right">
+          <button class="btn btn-primary" id="new-expense-submit" type="submit">Submit</button>
+        </div>
+      </form>
+
     </div>
   </div>
 
@@ -22,86 +81,91 @@
     <!-- Login and Sign up Links -->
     <!--##########################################################-->
     <div class="col-md-4 left-side">
-      <h3 class="link"><span id="login">login</span> &nbsp;<span id="signup">sign up</span></h3>
+      <div class="container login-signup">
+        <h3 class="link"><span id="login">login</span> &nbsp;<span id="signup">sign up</span></h3>
 
-      <!--##########################################################-->
-      <!-- Sign up form action="/register-username" method="post" onsubmit="return validateRegistration()"-->
-      <!--##########################################################-->
-      <form id="signup-form" class="hide" action="/register-username" method="post">
-        <div id="message">
-        </div>
+        <!--##########################################################-->
+        <!-- Sign up form 
+        action="/register-username" method="post" onsubmit="return validateRegistration()"-->
+        <!--##########################################################-->
+        <form id="signup-form" class="hide" action="/register-username" method="post">
+          <div id="message">
+          </div>
 
-        <div class="form-group">
-          <label for="name-input"><b>Username</b></label>
+          <div class="form-group">
+            <label for="name-input"><b>Username</b></label>
 
-          <input class="form-control" id="name-input" type="text" pattern="[a-zA-Z0-9]+" placeholder="Create a username"
-            name="name" required minlength="4" maxlength="12" size="15">
-        </div>
-        <div class="form-group">
-          <label for="psw-input"><b>Password</b> (must use letters and numbers)</label>
+            <input class="form-control" id="name-input" type="text" pattern="[a-zA-Z0-9]+" placeholder="Create a username"
+              name="name" required minlength="4" maxlength="12" size="15">
+          </div>
+          <div class="form-group">
+            <label for="psw-input"><b>Password</b> (must use letters and numbers)</label>
 
-          <input class="form-control" id="psw-input" type="password" pattern="(?=.*\d)(?=.*[a-z]).{8,}" placeholder="Enter Password"
-            name="psw" required minlength="8" maxlength="12" size="15">
-        </div>
-        <div class="form-group">
-          <label for="confpsw-input"><b>Confirm Password</b></label>
-          <input class="form-control" id="confpsw-input" type="password" pattern="(?=.*\d)(?=.*[a-z]).{8,}" placeholder="Confirm Password"
-            name="psw" required minlength="8" maxlength="12" size="15">
-        </div>
-        <div class="form-group">
-          <button class="btn btn-primary" id="signUp" type="submit">Sign Up</button>
+            <input class="form-control" id="psw-input" type="password" pattern="(?=.*\d)(?=.*[a-z]).{8,}" placeholder="Enter Password"
+              name="psw" required minlength="8" maxlength="12" size="15">
+          </div>
+          <div class="form-group">
+            <label for="confpsw-input"><b>Confirm Password</b></label>
+            <input class="form-control" id="confpsw-input" type="password" pattern="(?=.*\d)(?=.*[a-z]).{8,}"
+              placeholder="Confirm Password" name="psw" required minlength="8" maxlength="12" size="15">
+          </div>
+          <div class="form-group">
+            <button class="btn btn-primary" id="signUp" type="submit">Sign Up</button>
 
-          <button type="button" onclick="document.getElementById('id02').style.display='none'" class="btn btn-danger cancelbtn">Cancel</button>
-        </div>
-        <div class="form-group">
-          <input class="remember-me" type="checkbox" name="remember">
-          <label class="form-check-label" for="exampleCheck1">Remember me</label>
-          <label for="message" id="lblmessage"></label>
-        </div>
-
-        <div class="form-group">
-          <span class="psw"><a class="psw" href="#">Forgot password?</a></span>
-        </div>
-      </form>
-
-      <!--##########################################################-->
-      <!-- Login form -->
-      <!--##########################################################-->
-      <form id="login-form" action="/login-username" method="post">
-        <div class="form-group">
-          <label for="uname-input"><b>Username</b></label>
-          <input class="form-control" id="uname-input" type="text" pattern="[a-zA-Z0-9]+" placeholder="Enter Username" name="uname" required
-            minlength="8" maxlength="12" size="15">
-        </div>
-        <div class="form-group">
-          <label for="upsw-input"><b>Password</b></label>
-          <input class="form-control" id="upsw-input" type="password" pattern="[A-Za-z0-9_]{1,15}" placeholder="Enter Password" name="upsw" required
-            minlength="8" maxlength="12" size="15">
-        </div>
-        <div class="form-group">
-
-          <button class="btn btn-primary" id="signIn" type="submit">Login</button>
+            <button type="button" onclick="document.getElementById('id02').style.display='none'" class="btn btn-danger cancelbtn">Cancel</button>
+          </div>
+          <div class="form-group">
+            <input class="remember-me" type="checkbox" name="remember">
+            <label class="form-check-label" for="exampleCheck1">Remember me</label>
+            <label for="message" id="lblmessage"></label>
+          </div>
 
 
+          <div class="form-group">
+            <span class="psw"><a class="psw" href="#">Forgot password?</a></span>
+          </div>
+        </form>
 
-          <button class="btn btn-danger cancelbtn" type="button" onclick="document.getElementById('id01').style.display='none'"
-            class="cancelbtn">Cancel</button>
-        </div>
-        <div class="form-group">
-          <input class="remember-me" type="checkbox" name="remember">
-          <label class="form-check-label" for="message" id="lblmessage1">Remember Me</label>
-        </div>
-        <div class="form-group">
-          <span class="psw"><a class="psw" href="#">Forgot password?</a></span>
-        </div>
+        <!--##########################################################-->
+        <!-- Login form -->
+        <!--##########################################################-->
+        <form id="login-form" action="/login-username" method="post">
+          <div class="form-group">
+            <label for="uname-input"><b>Username</b></label>
+            <input class="form-control" id="uname-input" type="text"  pattern="[a-zA-Z0-9]+" placeholder="Enter Username" name="uname" required
+              minlength="8" maxlength="12" size="15">
+          </div>
+          <div class="form-group">
+            <label for="upsw-input"><b>Password</b></label>
+            <input class="form-control" id="upsw-input" type="password" pattern="[A-Za-z0-9_]{1,15}" placeholder="Enter Password" name="upsw"
+              required minlength="8" maxlength="12" size="15">
+          </div>
+          <div class="form-group">
 
-      </form>
+
+            <button class="btn btn-primary" id="signIn" type="submit">Login</button>
+
+
+
+            <button class="btn btn-danger cancelbtn" type="button" onclick="document.getElementById('id01').style.display='none'"
+              class="cancelbtn">Cancel</button>
+          </div>
+          <div class="form-group">
+            <input class="remember-me" type="checkbox" name="remember">
+            <label class="form-check-label" for="message" id="lblmessage1">Remember Me</label>
+          </div>
+          <div class="form-group">
+            <span class="psw"><a class="psw" href="#">Forgot password?</a></span>
+          </div>
+
+        </form>
+      </div>
       <br />
 
       <!--##########################################################-->
       <!-- Month Selection -->
       <!--##########################################################-->
-      <div class="btn-group">
+      {{!-- <div class="btn-group">
         <button class="btn btn-secondary btn-lg dropdown-toggle" id="month-dropdown" type="button" data-toggle="dropdown"
           aria-haspopup="true" aria-expanded="false">
           MONTH
@@ -111,7 +175,7 @@
           <option>December 2018</option>
           <option>November 2017</option>
         </div>
-      </div>
+      </div> --}}
       <br />
 
       <!--##########################################################-->
@@ -160,50 +224,10 @@
       <!--##########################################################-->
       <!-- Username Display -->
       <!--##########################################################-->
+
       {{!-- <h2>{{username}}</h2> --}}
       <h2 id="username-display"></h2>
       <h4 id="user-logout">log out</h4>
-
-      <!--##########################################################-->
-      <!-- Input new expense form -->
-      <!--##########################################################-->
-
-
-
-      <form id="new-expense-form">
-        <h2 class="header">new purchase</h2>
-        <div class="form-row">
-          <div class="col">
-            <select class="form-control" id="category">
-              <option class="choose">Category...</option>
-              {{#each category}}
-              <option>{{this.name}}</option>
-              {{/each}}
-            </select>
-          </div>
-          <!-- User enters the description -->
-          <div class="col">
-            <input type="text" class="form-control" id="description" placeholder="What you get?">
-          </div>
-          <br />
-
-          <!-- User enters the amount -->
-          <div class="input-group col">
-            <span class="input-group-addon">$&nbsp;</span>
-            <input type="number" value="0.00" min="0" step="0.01" data-number-to-fixed="2" data-number-stepfactor="100"
-              class="form-control currency" id="amount" />
-          </div>
-          <!-- User enters the date -->
-          <div class="col">
-            <input type="date" class="form-control" id="date">
-          </div>
-          <!-- Submit button should submit all four values to the database -->
-        </div>
-
-        <div class="right">
-          <button class="btn btn-primary" id="new-expense-submit" type="submit">Submit</button>
-        </div>
-      </form>
 
       <!--#############################################################-->
       <!-- Table of categories and total amounts spent -->
@@ -227,19 +251,17 @@
           <tr>
             <th scope="col" id="category-column">STUFF</th>
             <th scope="col" id="expense-column">MONEY</th>
-          </tr> 
+          </tr>
         </thead>
         <tbody>
 
-          
           {{#each expense}}
           <tr>
             <td class="category-td">{{this.name}}</td>
-            
+
             <td class="expense-td">{{this.total}}</td>
           </tr>
           {{/each}}
-
           <!-- This row will have the total expenses of all the categories -->
           <tr class="total-expense-row">
             <td id="total-category">TOTAL</td>
@@ -261,12 +283,12 @@
           <!-- Income value -->
           <tr>
             <td class="category-td">INCOME</td>
-            <td class="expense-td">${{ income-total }}</td>
+            <td class="expense-td">${{ incomeTotal }}</td>
           </tr>
           <!-- Using total of all categories' expenses. -->
           <tr>
             <td class="category-td">EXPENSES</td>
-            <td class="expense-td">${{ expense-total }}</td>
+            <td class="expense-td">${{ expenseTotal }}</td>
           </tr>
           <!-- The difference between income and expenses -->
           <tr class="total-savings-row">

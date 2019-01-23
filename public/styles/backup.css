@@ -1,32 +1,28 @@
 body {
-  font-family: "Nunito", Arial, Helvetica, sans-serif;
-  
+  font-family: "Montserrat", Arial, Helvetica, sans-serif;
+  background-color: #e8f5ff;
 }
 
 /* title */
 .header {
-  color: #18486d;
-  letter-spacing: 11px;
+  color: #96d3ff;
   text-align: left;
   font-size: 3rem;
-  font-family: "Nunito", Arial, Helvetica, sans-serif;
-  padding-bottom: 15px;
+  font-family: "Coiny", Arial, Helvetica, sans-serif;
 }
 .row1 {
   margin-top: 30px;
-  
 }
 #header-title {
-  letter-spacing: 15px;
   padding: 10px;
   padding-bottom: 0;
   margin-top: 30px;
   margin-bottom: 0;
   text-align: center;
-  
-  
-  font-family: "Nunito", Arial, Helvetica, sans-serif;
-  color: #18486d;
+  background-color: #96d3ff;
+  border-radius: 30px;
+  font-family: "Coiny", Arial, Helvetica, sans-serif;
+  color: white;
   font-size: 4rem;
  
   text-align: center;
@@ -40,7 +36,7 @@ username
 
 
 .username {
-  font-family: "Nunito", Arial, Helvetica, sans-serif;
+  font-family: "Coiny", Arial, Helvetica, sans-serif;
   text-align: left;
   font-size: 2rem;
   color: #96d3ff;
@@ -52,7 +48,7 @@ username
 #logOut {
   color: rgb(255, 169, 226);
 }
-#logOut:hover {
+#logout:hover {
   cursor: pointer;
   color: rgb(255, 93, 201)
 }
@@ -77,8 +73,8 @@ sign up and login
 }
 
 .btn-primary {
-  background-color: #65bfff;
-  border-color: #65bfff;
+  background-color: #96d3ff;
+  border-color: #96d3ff;
 }
 .btn-primary:hover {
   background-color: #36abff;
@@ -88,13 +84,13 @@ sign up and login
 .link {
   
   margin-right: 25px;
-  font-family: "Nunito", Arial, Helvetica, sans-serif;
+  font-family: "Coiny", Arial, Helvetica, sans-serif;
   text-align: left;
   font-size: 3rem;
 }
 
 #login {
-  color: white;
+  color: rgb(255, 169, 226);
 }
 
 #signup {
@@ -108,7 +104,7 @@ sign up and login
 
 #login:hover {
   cursor: pointer;
-  color:  rgb(255, 169, 226);
+  color: rgb(255, 93, 201)
 }
 
 label {
@@ -133,6 +129,11 @@ label {
   border-color: rgb(255, 66, 192);
 }
 
+.form-group {
+  font-size: 1rem;
+  text-align: left;
+}
+
 .psw {
   font-size: 1rem;
   text-align: left;
@@ -150,25 +151,47 @@ label {
 }
 
 input[type=text] {
-  font-size: 1.5rem;
   border: 1px solid #afcfe6;
   border-radius: 4px;
 }
 
 input[type=password] {
-  font-size: 1.5rem;
   border: 1px solid #afcfe6;
   border-radius: 4px;
 }
 
-.login-signup {
-  background-color: #18486d;
-  border-radius: 5px;
-  padding: 10px;
-  padding-left: 15px;
+/* 
+#######################
+months
+#######################
+*/
+
+#month-dropdown {
+ 
+  background-color: rgb(142, 231, 189);
+  border-color: rgb(142, 231, 189);
+  color: white;
+  
+
+}
+.btn-secondary {
+  background-color: rgb(142, 231, 189);
+  border-color: rgb(142, 231, 189);
+  color: white;
   
 }
 
+.btn-secondary:hover {
+  background-color: rgb(78, 216, 152);
+  border-color: rgb(78, 216, 152);
+  color: white;
+}
+
+.btn-secondary:focus {
+  background-color: rgb(142, 231, 189);
+  border-color: rgb(142, 231, 189);
+  color: white;
+}
 
 /* 
 #######################
@@ -177,12 +200,10 @@ new expense form
 */
 
 #new-expense-form {
-  margin-top: 80px;
-  border-radius: 5px;
-  border: 1px #18486d solid;
+  background-color: white;
+  border-radius: 13px;
+  padding: 8px;
   margin-bottom: 25px;
-  padding-left: 20px;
-  padding-right: 20px;
 }
 
 .right {
@@ -206,7 +227,7 @@ main table
 */
 
 th {
-  font-family: "Nunito", Arial, Helvetica, sans-serif;
+  font-family: "Coiny", Arial, Helvetica, sans-serif;
   color: white;
   font-size: 3.5rem;
 }
@@ -214,7 +235,7 @@ th {
 #category-column {
   background-color: rgb(142, 231, 189);
   text-align: left;
-  border-radius: 5px 0 0 0;
+  border-radius: 13px 0 0 0;
 }
 #expense-column {
   background-color: rgb(142, 231, 189);
@@ -287,7 +308,7 @@ math it up table
 }
 
 #math {
-  border-radius: 5px 13px 0 0;
+  border-radius: 13px 13px 0 0;
   background-color: #96d3ff;
 }
 
@@ -304,14 +325,14 @@ other
 
 #news-header {
   margin-top: 10px;
-  font-family: "Nunito", Arial, Helvetica, sans-serif;
+  font-family: "Coiny", Arial, Helvetica, sans-serif;
   color: #96d3ff;
   font-size: 4rem;
 }
 
 #charts-header {
   margin-top: 10px;
-  font-family: "Nunito", Arial, Helvetica, sans-serif;
+  font-family: "Coiny", Arial, Helvetica, sans-serif;
   color: #96d3ff;
   font-size: 4rem;
 }
