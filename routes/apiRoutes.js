@@ -55,7 +55,7 @@ module.exports = function(app) {
       }
     );
   });
-  app.get(["/"], function(req, res) {
+  app.get("/", function(req, res) {
     var sqlQuery = "SELECT  distinct(C.name), SUM(E.amount) AS total from expense E inner join category C on E.category_name = C.name inner join users U on E.users_id = U.id where U.userName = 'johnD' group by C.name";
     connection.query(sqlQuery, function(error, results, fields) {
       if (error) throw error;
