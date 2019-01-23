@@ -10,7 +10,7 @@ module.exports = function(app) {
     var req = req.body;
     budget.income.all(function(result) {
       console.log("Api routes " + result);
-      res.json(result);
+      res.json(result[0].amount);
     });
   });
 
@@ -58,10 +58,14 @@ module.exports = function(app) {
     connection.query(sqlQuery, function(error, results, fields) {
       if (error) throw error;
       console.log("newRoutes!!!!!!!!!!!")
-      console.log(results);
-
-      res.render("hdb", { expense: results })
-    })
+      var totalsum = 0;
+      for (i = 0; i < results.length; i ++) {
+      console.log(results[i].total);
+      totalsum = totalsum += results[i].total;
+      }
+      console.log(totalsum)
+      res.render("hdb", { expense: results, totalsum })
+    });
   })
   /* --------------end expense-----------------*/
 
@@ -106,16 +110,16 @@ module.exports = function(app) {
     });
   });
 
-  // app.get("/api/user-expenses", function(req, res) {
-  //   var condition = req.body.name;
-  //   budget.expense.expenseByCategory(condition, function(expense) {
-  //     console.log("expense stuffffff");
-  //     console.log(condition);
-  //     res.render("maintable", {expense: expense});
+  app.get("/api/user-expenses", function(req, res) {
+    var condition = req.body.name;
+    budget.expense.expenseByCategory(condition, function(expense) {
+      console.log("expense stuffffff");
+      console.log(condition);
+      res.render("maintable", {expense: expense});
 
-  //   })
+    })
 
-  // })
+  })
 
   /*-------------end users----------------*/
   //Login Controler Code
