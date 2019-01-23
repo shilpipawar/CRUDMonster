@@ -32,8 +32,8 @@ module.exports = function(app) {
     res.render("202");
   });
 
-  app.post("/register-username", function(req, res) {
-    res.render("202");
+ // app.post("/register-username", function(req, res) {
+  //  res.render("202");
   })
   app.get("/main-page", function(req, res) {
     res.redirect(path.join(__dirname, "../views/hdb.handlebars"));

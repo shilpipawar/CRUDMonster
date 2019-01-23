@@ -21,7 +21,7 @@ module.exports = function(app) {
       ["amount", "users_id", "category_id", "notes", "date"],
       [req.amount, req.users_id, req.category_id, req.notes, req.date],
       function(result) {
-        console.log("API routes and " + result);
+        console.log(result);
         res.json(result);
       }
     );
@@ -126,7 +126,7 @@ module.exports = function(app) {
       ["userName", "password"],
       [userName, password],
       function(result) {
-        console.log("API routes and " + result);
+        console.log(result);
         res.json(result);
       });
   });
