@@ -178,6 +178,8 @@
               {{#each category}}
               <option>{{this.name}}</option>
               {{/each}}
+
+
             </select>
           </div>
           <!-- User enters the description -->
@@ -229,6 +231,7 @@
           </tr> 
         </thead>
         <tbody>
+
           
           {{#each expense}}
           <tr>
@@ -237,6 +240,7 @@
             <td class="expense-td">{{this.total}}</td>
           </tr>
           {{/each}}
+
           <!-- This row will have the total expenses of all the categories -->
           <tr class="total-expense-row">
             <td id="total-category">TOTAL</td>

@@ -137,6 +137,7 @@ module.exports = function(app) {
         });
        // res.render("hdb", {username:result[0].userName});
         // res.json(result[0].userName);
+
       }else{
         console.log("ERROR");
       }

@@ -121,6 +121,7 @@ $(document).ready(function () {
           });
           // console.log("success");
           $("#username-display").html(result);
+
         });
       }
   }
