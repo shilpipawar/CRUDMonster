@@ -9,6 +9,32 @@ $(document).ready(function() {
     $("#signup-form").removeClass("hide");
   });
 
+  $.ajax({
+    method: "GET",
+    url: "/api/income/all",
+  }).then(function(res) {
+   console.log("logging income data...");
+   console.log(res);
+   var totalIncome = 0;
+   for (i = 0; i < res.length; i ++) {
+    console.log(res[i].amount);
+    totalIncome = totalIncome += res[i].amount;
+    }
+    console.log(totalIncome);
+    $("#income-total").html(totalIncome);
+
+  });
+
+    var income = $("#income-total").text();
+    var expense = $("#expense-total").text();
+
+    //income = parseInt(income);
+    //expense = parseInt(expense);
+    console.log(income);
+    console.log(expense);
+    var yoDough = total - expense;
+    console.log(yoDough);
+  
   $("#new-expense-submit").on("click", function(event) {
     event.preventDefault();
     var newExpense = {
@@ -112,7 +138,8 @@ $(document).ready(function() {
           url: "/api/user-expenses",
           data: input
         }).then(function(res) {
-          // console.log("result " + res)
+           console.log("logging expense data...");
+           
         });
         // console.log("success");
       });
