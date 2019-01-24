@@ -15,13 +15,26 @@ $(document).ready(function() {
   }).then(function(res) {
    console.log("logging income data...");
    console.log(res);
+   var totalIncome = 0;
    for (i = 0; i < res.length; i ++) {
-    console.log(res[i].total);
-    totalsum = totalsum += res[i].total;
+    console.log(res[i].amount);
+    totalIncome = totalIncome += res[i].amount;
     }
-    $("")
+    console.log(totalIncome);
+    $("#income-total").append("$" + totalIncome);
+    
   });
 
+    var income = $("#income-total").val();
+    var expense = $("expense-total").val();
+
+   // income = parseInt(income);
+   // expense = parseInt(expense);
+    console.log(income);
+    console.log(expense);
+    var yoDough = income - expense;
+    console.log(yoDough);
+  
   $("#new-expense-submit").on("click", function(event) {
     event.preventDefault();
     var newExpense = {
