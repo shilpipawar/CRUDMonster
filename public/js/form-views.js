@@ -21,18 +21,18 @@ $(document).ready(function() {
     totalIncome = totalIncome += res[i].amount;
     }
     console.log(totalIncome);
-    $("#income-total").append("$" + totalIncome);
-    
+    $("#income-total").html(totalIncome);
+
   });
 
-    var income = $("#income-total").val();
-    var expense = $("expense-total").val();
+    var income = $("#income-total").text();
+    var expense = $("#expense-total").text();
 
-   // income = parseInt(income);
-   // expense = parseInt(expense);
+    //income = parseInt(income);
+    //expense = parseInt(expense);
     console.log(income);
     console.log(expense);
-    var yoDough = income - expense;
+    var yoDough = total - expense;
     console.log(yoDough);
   
   $("#new-expense-submit").on("click", function(event) {
