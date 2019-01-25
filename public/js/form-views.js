@@ -50,14 +50,20 @@ $(document).ready(function() {
         .trim(),
       date: $("#date")
         .val()
+        .trim(),
+      username: $("#username-display")
+        .val()
         .trim()
     };
+    console.log("newExpense" + newExpense);
 
     $.ajax("/api/expense", {
       type: "POST",
       data: newExpense
     }).then(function() {
-      location.reload();
+      //var window = top.location; //Shilpa
+      //window.top.location.reload();
+      console.log("Expence Inserted..");
     });
     $("#category").val("Category...");
     $("#description").val("");
@@ -141,9 +147,9 @@ $(document).ready(function() {
           url: "/api/user-expenses",
           data: input
         }).then(function(res) {
-          console.log("logging expense data...");
+          console.log("logging expense data..." + res);
         });
-        // console.log("success");
+        console.log("success");
       });
     }
   }

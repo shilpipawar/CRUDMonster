@@ -37,8 +37,28 @@ var orm = {
   },
 
   selectPassword: function(table, col, val, cb) {
-    var queryString = 
-    "SELECT password, userName FROM " + table + " WHERE " + col + " = '" + val + "';";
+    var queryString =
+      "SELECT password, userName FROM " +
+      table +
+      " WHERE " +
+      col +
+      " = '" +
+      val +
+      "';";
+    // console.log(queryString);
+
+    connection.query(queryString, function(err, result) {
+      if (err) {
+        throw err;
+      }
+      cb(result);
+    });
+  },
+
+  //Shilpa - selectUserId
+  selectUserId: function(table, col, val, cb) {
+    var queryString =
+      "SELECT * FROM " + table + " WHERE " + col + " = '" + val + "';";
     // console.log(queryString);
 
     connection.query(queryString, function(err, result) {
@@ -58,8 +78,7 @@ var orm = {
       ") VALUES (" +
       printQuestionMarks(val.length) +
       ") ";
-
-    // console.log(queryString);
+    console.log(queryString);
 
     connection.query(queryString, val, function(err, res) {
       if (err) {
@@ -97,9 +116,11 @@ var orm = {
   },
 
   expenseByCategory: function(condition, cb) {
-    var queryString = "SELECT  distinct(C.name), SUM(E.amount) AS total from expense E";
+    var queryString =
+      "SELECT  distinct(C.name), SUM(E.amount) AS total from expense E";
     queryString += " inner join category C on E.category_name = C.name";
-    queryString += " inner join users U on E.users_id = U.id where U.userName = '";
+    queryString +=
+      " inner join users U on E.users_id = U.id where U.userName = '";
     queryString += condition;
     queryString += "' group by C.name";
     console.log(queryString);
@@ -124,7 +145,6 @@ var orm = {
       cb(result);
     });
   }
-  
 };
 
 module.exports = orm;

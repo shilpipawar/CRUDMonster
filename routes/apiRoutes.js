@@ -41,14 +41,23 @@ module.exports = function(app) {
 
   app.post("/api/expense", function(req, res) {
     var amount = req.body.amount;
-    var usersID = 2;
-    var categoryID = req.body.category;
+    var userName = req.body.username; //2
+    //select id from users where userName = 'shilpa-pawar'
+    var category = req.body.category;
+    //var categoryID = 2;//call select * from category where name = 'Food';
     var notes = req.body.notes;
     var date = req.body.date;
-    console.log(categoryID);
+    //console.log("categoryid" + categoryID);
+    //budget.expense.create
+    var usersID = 3; // setting defult as value cannot be null
+    budget.users.selectUserId(["userName"], [userName], function(result) {
+      console.log("Line 53 " + result[0]);
+
+      //userID = result[0].id;
+    });
     budget.expense.create(
       ["amount", "users_id", "category_name", "notes", "date"],
-      [amount, usersID, categoryID, notes, date],
+      [amount, usersID, category, notes, date],
       function(result) {
         console.log(result);
         res.json(result);
