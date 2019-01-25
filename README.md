@@ -16,8 +16,26 @@ Where My Dough Go was created by
  and 
  <a href="https://github.com/nickila">Brian Nickila</a> 
  at the University of Minnesota Coding Bootcamp.We used Node.js, Handlebars, jQuery, CSS, Bootstrap, MySQL and Express to create this app.
+ Application is hosting on Heroku
                               
                                 https://github.com/shilpipawar/CRUDMonster
+                                https://aqueous-reef-17353.herokuapp.com/
+# Installing
+- package.json has all required dependencies
+
+```npm install```
+
+# Configuration
+
+To use "Where My Dough Go?" App, you will need mysql.
+
+# packages
+```
+"dotenv": "^6.2.0",
+"express": "^4.16.3",
+"express-handlebars": "^3.0.0",
+"mysql": "^2.16.0"
+
 
 ## Future-
 Providing ability to user login and maintain the session for inserting and populating expense income data based on category.
