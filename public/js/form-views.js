@@ -11,30 +11,33 @@ $(document).ready(function() {
 
   $.ajax({
     method: "GET",
-    url: "/api/income/all",
+    url: "/api/income/all"
   }).then(function(res) {
-   console.log("logging income data...");
-   console.log(res);
-   var totalIncome = 0;
-   for (i = 0; i < res.length; i ++) {
-    console.log(res[i].amount);
-    totalIncome = totalIncome += res[i].amount;
+    console.log("logging income data...");
+    console.log(res);
+    var totalIncome = 0;
+    for (i = 0; i < res.length; i++) {
+      console.log(res[i].amount);
+      totalIncome = totalIncome += res[i].amount;
     }
     console.log(totalIncome);
     $("#income-total").html(totalIncome);
-
   });
 
-    var income = $("#income-total").text();
-    var expense = $("#expense-total").text();
+  var income = $("#income-total")
+    .val()
+    .trim();
+  var expense = $("#expense-total")
+    .val()
+    .trim();
 
-    //income = parseInt(income);
-    //expense = parseInt(expense);
-    console.log(income);
-    console.log(expense);
-    var yoDough = total - expense;
-    console.log(yoDough);
-  
+  income = parseInt(income);
+  expense = parseInt(expense);
+  console.log(income);
+  console.log(expense);
+  var yoDough = income - expense;
+  console.log(yoDough);
+
   $("#new-expense-submit").on("click", function(event) {
     event.preventDefault();
     var newExpense = {
@@ -114,7 +117,7 @@ $(document).ready(function() {
     var password = $("#upsw-input")
       .val()
       .trim();
-      console.log("username + " + username + password);
+    console.log("username + " + username + password);
     if (username === "") {
       $("#message").html("Please enter a username");
     } else {
@@ -138,8 +141,7 @@ $(document).ready(function() {
           url: "/api/user-expenses",
           data: input
         }).then(function(res) {
-           console.log("logging expense data...");
-           
+          console.log("logging expense data...");
         });
         // console.log("success");
       });
