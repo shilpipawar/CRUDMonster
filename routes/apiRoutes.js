@@ -151,6 +151,7 @@ module.exports = function(app) {
   //Register Controler Code
   app.post("/register-username", function(req, res) {
     console.log(req.body);
+    var window = top.location;//Shilpa
     var userName = req.body.name;
     var password = req.body.password;
     console.log(userName, password);
@@ -159,7 +160,7 @@ module.exports = function(app) {
       [userName, password],
       function(result) {
         console.log("API routes and " + result);
-        location.reload();
+        window.top.location.reload();
       }
     );
   });
