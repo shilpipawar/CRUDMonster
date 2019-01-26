@@ -1,12 +1,12 @@
-#Where My Dough Go?
+# Where My Dough Go?
 
-##Description-
+## Description-
 "Where My Dough Go?" is app that personalizes a user’s expense and income. Allows user to sign in, and insert income and expense, create a their own list of expense based on categories and store it to a database to track down for based on Day/Month/Year.
 
-##Motivation-
+## Motivation-
 A web app for tracking down users own expense and providing more visual report for monthly/Daily earning and expense.
 
-##Development efforts-
+## Development efforts-
 Where My Dough Go? allows a user to signup/login and add expenses by category. 
 The total amounts get stored and totaled into the category total space to allow the user where all their respective dough go. 
 Where My Dough Go was created by 
